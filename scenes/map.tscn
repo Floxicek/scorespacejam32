@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bl5uc2yvuyb2t"]
+[gd_scene load_steps=17 format=3 uid="uid://bl5uc2yvuyb2t"]
 
 [ext_resource type="PackedScene" uid="uid://bspxhgfx557x5" path="res://scenes/platform_small.tscn" id="1_3ymyh"]
 [ext_resource type="PackedScene" uid="uid://dxlyee51mcuqw" path="res://scenes/platform_mid.tscn" id="2_e4lk0"]
@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://858caggshc0b" path="res://assets/ball.png" id="6_6tlcr"]
 [ext_resource type="PackedScene" uid="uid://cipkjr0yuy07q" path="res://scenes/sand_platform_small.tscn" id="6_7mx0e"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="6_vkak4"]
-[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="11_d7hm8"]
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="11_sxms1"]
 [ext_resource type="FontFile" uid="uid://bxibr3cgsdhaa" path="res://assets/fonts/Fredoka-Light.ttf" id="12_5qm5r"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="12_413ee"]
+[ext_resource type="Script" path="res://scripts/safety_net.gd" id="14_xblwq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hfhv"]
 radius = 8.0
@@ -20,6 +20,8 @@ radius = 8.0
 [sub_resource type="Curve" id="Curve_jnxqq"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.852632, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.43956), -3.80298, 0.0, 1, 0]
 point_count = 3
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6517x"]
 
 [node name="Map" type="Node2D"]
 
@@ -79,6 +81,13 @@ position = Vector2(-167, 357)
 [node name="Player" type="Node2D" parent="."]
 position = Vector2(-170, 0)
 
+[node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("player")]
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+position_smoothing_enabled = true
+script = ExtResource("4_tuxay")
+player = NodePath("../PlayerRigid/PlayerSprite")
+
 [node name="PlayerRigid" type="RigidBody2D" parent="Player" groups=["Player"]]
 z_index = 7
 physics_material_override = ExtResource("4_eyk3u")
@@ -90,17 +99,33 @@ script = ExtResource("6_vkak4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerRigid"]
 shape = SubResource("CircleShape2D_4hfhv")
 
-[node name="Camera2D" type="Camera2D" parent="Player/PlayerRigid"]
-physics_interpolation_mode = 1
-limit_smoothed = true
-position_smoothing_enabled = true
-script = ExtResource("4_tuxay")
-
 [node name="PlayerSprite" type="Sprite2D" parent="Player/PlayerRigid"]
 self_modulate = Color(0.356863, 0.764706, 0.921569, 1)
 z_index = 10
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_6tlcr")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Player/PlayerRigid"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.438078
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(16, 16)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("6_6tlcr")
+texture_progress_offset = Vector2(-16, -16)
 
 [node name="Arrow" type="Line2D" parent="Player/PlayerRigid"]
 scale = Vector2(4, 28)
@@ -110,27 +135,6 @@ width_curve = SubResource("Curve_jnxqq")
 joint_mode = 2
 end_cap_mode = 2
 antialiased = true
-
-[node name="ProgressBar" type="TextureProgressBar" parent="Player" node_paths=PackedStringArray("player")]
-unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 64.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(16, 16)
-size_flags_horizontal = 6
-size_flags_vertical = 6
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("6_6tlcr")
-script = ExtResource("11_d7hm8")
-player = NodePath("../PlayerRigid")
 
 [node name="UI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -147,3 +151,13 @@ theme_override_fonts/font = ExtResource("12_5qm5r")
 theme_override_font_sizes/font_size = 81
 text = "1"
 horizontal_alignment = 1
+
+[node name="SafetyNet" type="Area2D" parent="."]
+position = Vector2(439, 1423)
+script = ExtResource("14_xblwq")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafetyNet"]
+shape = SubResource("WorldBoundaryShape2D_6517x")
+
+[connection signal="body_entered" from="SafetyNet" to="SafetyNet" method="_on_body_entered"]

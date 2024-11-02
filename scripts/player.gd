@@ -25,13 +25,24 @@ func _ready() -> void:
 	self.max_contacts_reported = 10
 
 
+var reset_state = false
+var moveVector: Vector2
+
+func _integrate_forces(state):
+	if reset_state:
+		state.transform = Transform2D(0.0, moveVector)
+		reset_state = false
+
+func move_body(targetPos: Vector2):
+	moveVector = targetPos;
+	reset_state = true;
+
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("ui_left"):
 		angle -= angle_speed * _delta
 	if Input.is_action_pressed("ui_right"):
 		angle += angle_speed * _delta
 	angle = clamp(angle, -1.5, 1.5)
-	$Arrow.rotation = angle - self.rotation
 
 	if Input.is_action_pressed("ui_accept"):
 		power += power_speed * _delta
@@ -40,7 +51,12 @@ func _process(_delta: float) -> void:
 		self.apply_impulse(Vector2.UP.rotated(angle) * power)
 		power = 0
 		%UI.add_stroke()
-	%ProgressBar.value = power / max_power * 100
+	
+	$ProgressBar.value = power / max_power * 100
+
+func _physics_process(delta):
+	$Arrow.rotation = angle - self.rotation
+	$ProgressBar.rotation = -self.rotation
 
 
 func _on_body_entered(body: Node) -> void:

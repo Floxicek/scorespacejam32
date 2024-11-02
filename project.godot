@@ -43,6 +43,11 @@ zoom_out={
 ]
 }
 
+[physics]
+
+common/physics_ticks_per_second=120
+common/physics_interpolation=true
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
