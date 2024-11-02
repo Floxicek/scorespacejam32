@@ -84,7 +84,6 @@ position = Vector2(-170, 0)
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("player")]
 physics_interpolation_mode = 1
 auto_translate_mode = 1
-position_smoothing_enabled = true
 script = ExtResource("4_tuxay")
 player = NodePath("../PlayerRigid/PlayerSprite")
 

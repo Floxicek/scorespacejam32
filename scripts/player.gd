@@ -56,7 +56,7 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta):
 	$Arrow.rotation = angle - self.rotation
-	$ProgressBar.rotation = -self.rotation
+	$ProgressBar.rotation = - self.rotation
 
 
 func _on_body_entered(body: Node) -> void:
