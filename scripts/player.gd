@@ -26,4 +26,5 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("ui_accept") or power >= max_power:
 		self.apply_impulse(Vector2.UP.rotated(angle) * power)
 		power = 0
+		%UI.add_stroke()
 	%ProgressBar.value = power / max_power * 100
