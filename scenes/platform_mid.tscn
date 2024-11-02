@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxlyee51mcuqw"]
+
+[ext_resource type="Texture2D" uid="uid://cu3pwtpyqor7g" path="res://assets/platform_mid.png" id="1_pdk6q"]
+
+[node name="PlatformMid" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(-148.5, -45, -160.2, -32, -160.5, 32.6, -148.5, 44.6, 148, 45, 160.2, 32, 160.5, -32.7, 148.5, -44.7)
+
+[node name="Platform3" type="Sprite2D" parent="."]
+self_modulate = Color(0.278431, 0.278431, 0.278431, 1)
+position = Vector2(0, -21)
+texture = ExtResource("1_pdk6q")
+
+[node name="Platform2" type="Sprite2D" parent="."]
+self_modulate = Color(0.215686, 0.219608, 0.215686, 1)
+texture = ExtResource("1_pdk6q")

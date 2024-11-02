@@ -11,7 +11,9 @@ config_version=5
 [application]
 
 config/name="scorespacejam32"
+run/main_scene="res://scenes/map.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.929412, 0.901961, 0.890196, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -19,7 +21,13 @@ config/icon="res://icon.svg"
 Global="*res://global.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.929412, 0.901961, 0.890196, 1)
