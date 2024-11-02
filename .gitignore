@@ -4,3 +4,5 @@
 
 global.gd
 *.tmp
+
+.vscode/
