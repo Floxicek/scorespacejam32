@@ -43,9 +43,9 @@ func reset_position():
 	reset_state = true;
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("aim_left"):
 		angle -= angle_speed * _delta
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("aim_right"):
 		angle += angle_speed * _delta
 	angle = clamp(angle, -1.5, 1.5)
 
@@ -67,7 +67,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("ui_accept") or power >= max_power:
 		self.apply_impulse(Vector2.UP.rotated(angle) * power)
 		power = 0
-		%UI.add_stroke()
+		Score.add_stroke()
 	
 	$ProgressBar.value = power / max_power * 100
 

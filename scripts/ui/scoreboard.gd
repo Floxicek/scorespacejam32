@@ -7,8 +7,7 @@ func _ready():
 	$Scoreboard.hide()
 	$UsernameInput.hide()
 
-	if Score.newHighscore:
-		$UsernameInput.show()
+	$UsernameInput.show()
 
 
 func _on_username_cancel_button_pressed():
@@ -32,8 +31,7 @@ func show_scoreboard():
 	print("Scores: " + str(sw_result.scores))
 	
 	
-	for i in range(len(scoreboards) - 1, -1, -1):
+	for i in scoreboards:
 		var lab = Label.new()
-		lab.text = str(scoreboards[i]["player_name"]) + " " + str(Score.read_score_from_leaderboard(scoreboards[i]["score"]))
-		
+		lab.text = str(i["player_name"]) + " " + str(i["score"])
 		%ScoreboardVBox.add_child(lab)

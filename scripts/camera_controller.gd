@@ -3,7 +3,7 @@ extends Camera2D
 @export_category("Zoom")
 @export var zoom_increment := 0.2
 @export var zoom_speed := 0.5
-@export var zoom_min := 0.6
+@export var zoom_min := 1.0
 @export var zoom_max := 1.5
 @export_category("Follow")
 @export var player: Node2D

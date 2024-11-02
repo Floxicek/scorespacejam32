@@ -1,35 +1,18 @@
-[gd_scene load_steps=20 format=3 uid="uid://rdb1q2dg2hvg"]
+[gd_scene load_steps=12 format=3 uid="uid://cvj1qmb806ago"]
 
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="2_012ry"]
-[ext_resource type="PackedScene" uid="uid://dmub85j6lafvu" path="res://scenes/platform_mid.tscn" id="2_jbg5r"]
-[ext_resource type="PhysicsMaterial" uid="uid://dp7yo0dajty72" path="res://assets/platform_physics_material.tres" id="3_dh7kv"]
-[ext_resource type="Script" path="res://scripts/camera_controller.gd" id="4_b42me"]
-[ext_resource type="PackedScene" uid="uid://be7wo2vsdx6t2" path="res://scenes/sand_platform_long.tscn" id="4_uem45"]
+[ext_resource type="PackedScene" uid="uid://dxlyee51mcuqw" path="res://scenes/platform_mid.tscn" id="2_jbg5r"]
+[ext_resource type="PhysicsMaterial" uid="uid://cdceh87gryt3w" path="res://assets/platform_physics_material.tres" id="3_dh7kv"]
+[ext_resource type="PackedScene" uid="uid://bwurhyg67yn0n" path="res://scenes/sand_platform_long.tscn" id="4_uem45"]
 [ext_resource type="PackedScene" uid="uid://c3bptrg06rcus" path="res://scenes/platform_small_high.tscn" id="5_mlbpd"]
-[ext_resource type="PhysicsMaterial" uid="uid://d2mq347lug1e7" path="res://assets/player_physics_material.tres" id="5_u7548"]
-[ext_resource type="PackedScene" uid="uid://wbqynctxehg1" path="res://scenes/sand_platform_mid.tscn" id="6_0gqsl"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="6_1w0bi"]
-[ext_resource type="Texture2D" uid="uid://858caggshc0b" path="res://assets/ball.png" id="7_lvgku"]
-[ext_resource type="PackedScene" uid="uid://u3b12rjivl4h" path="res://scenes/platform_long.tscn" id="7_svmhg"]
-[ext_resource type="Script" path="res://scripts/ui.gd" id="8_b4tvn"]
-[ext_resource type="FontFile" uid="uid://bxibr3cgsdhaa" path="res://assets/fonts/Fredoka-Light.ttf" id="9_a006x"]
-[ext_resource type="Script" path="res://scripts/safety_net.gd" id="10_0tkm2"]
+[ext_resource type="PackedScene" uid="uid://dhgk6issxedai" path="res://scenes/sand_platform_mid.tscn" id="6_0gqsl"]
+[ext_resource type="PackedScene" uid="uid://dywrlg5ftfjdd" path="res://scenes/platform_long.tscn" id="7_svmhg"]
+[ext_resource type="PackedScene" uid="uid://cp36kiaghry3t" path="res://scenes/player.tscn" id="8_os17w"]
+[ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="9_xb0m2"]
+[ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="10_b8lpw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1rt6v"]
 size = Vector2(9997, 111)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4hfhv"]
-radius = 8.0
-
-[sub_resource type="Curve" id="Curve_umwhh"]
-_data = [Vector2(0.0114613, 1), 0.0, 0.0, 0, 0, Vector2(0.856733, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_akhae"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6517x"]
-distance = -70.0
 
 [node name="Map" type="Node2D"]
 
@@ -237,89 +220,9 @@ position = Vector2(-256, -672)
 [node name="PlatformLong" parent="Environment" instance=ExtResource("7_svmhg")]
 position = Vector2(224, -1248)
 
-[node name="Player" type="Node2D" parent="."]
-position = Vector2(0, -288)
-metadata/_edit_group_ = true
+[node name="Player" parent="." instance=ExtResource("8_os17w")]
+position = Vector2(-1, -204)
 
-[node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("player")]
-process_callback = 0
-script = ExtResource("4_b42me")
-zoom_min = 0.4
-player = NodePath("../PlayerRigid/PlayerSprite")
-ignore_height = -200
-height_offset = 200
+[node name="UI" parent="." instance=ExtResource("9_xb0m2")]
 
-[node name="PlayerRigid" type="RigidBody2D" parent="Player" groups=["Player"]]
-z_index = 7
-physics_material_override = ExtResource("5_u7548")
-gravity_scale = 1.5
-max_contacts_reported = 2
-angular_damp = 5.0
-script = ExtResource("6_1w0bi")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerRigid"]
-shape = SubResource("CircleShape2D_4hfhv")
-
-[node name="PlayerSprite" type="Sprite2D" parent="Player/PlayerRigid"]
-z_index = 10
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("7_lvgku")
-
-[node name="ProgressBar" type="TextureProgressBar" parent="Player/PlayerRigid"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 48.0
-offset_bottom = 48.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.438078
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(16, 16)
-size_flags_horizontal = 6
-size_flags_vertical = 6
-fill_mode = 4
-texture_progress = ExtResource("7_lvgku")
-texture_progress_offset = Vector2(-16, -16)
-
-[node name="Arrow" type="Line2D" parent="Player/PlayerRigid"]
-scale = Vector2(4, 28)
-points = PackedVector2Array(0, -1, 0, -3, 0, -4)
-width = 2.509
-width_curve = SubResource("Curve_umwhh")
-gradient = SubResource("Gradient_akhae")
-joint_mode = 1
-antialiased = true
-
-[node name="UI" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-script = ExtResource("8_b4tvn")
-
-[node name="StrokeCount" type="Label" parent="UI"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 48.0
-offset_bottom = 184.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.215686, 0.219608, 0.215686, 1)
-theme_override_fonts/font = ExtResource("9_a006x")
-theme_override_font_sizes/font_size = 81
-text = "1"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
-[node name="SafetyNet" type="Area2D" parent="."]
-position = Vector2(-31, 1765)
-script = ExtResource("10_0tkm2")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SafetyNet"]
-shape = SubResource("WorldBoundaryShape2D_6517x")
-
-[connection signal="body_entered" from="Player/PlayerRigid" to="Player/PlayerRigid" method="_on_body_entered"]
-[connection signal="body_entered" from="SafetyNet" to="SafetyNet" method="_on_body_entered"]
+[node name="SafetyNet" parent="." instance=ExtResource("10_b8lpw")]

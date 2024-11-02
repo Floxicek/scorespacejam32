@@ -5,6 +5,14 @@ var highscore = 0
 
 const MAX_SCORE = 1000000
 
+var strokes = 0
+signal update_strokes
+
+
+func add_stroke():
+	strokes += 1
+	emit_signal("update_strokes", strokes)
+
 func get_score_for_leaderboard():
 	if last_score >= MAX_SCORE:
 		return -1
@@ -17,3 +25,6 @@ func new_score(sc):
 	last_score = sc
 	if highscore < last_score:
 		highscore = last_score
+
+func level_finished():
+	new_score(strokes)

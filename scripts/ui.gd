@@ -1,10 +1,9 @@
 extends CanvasLayer
 
-var stroke_count = 0
 func _ready():
-	$StrokeCount.text = str(stroke_count)
+	$StrokeCount.text = str(0)
+	Score.update_strokes.connect(update_strokes)
 
-
-func add_stroke():
-	stroke_count += 1
-	$StrokeCount.text = str(stroke_count)
+func update_strokes(new_stroke):
+	$StrokeCount.text = str(new_stroke)
+	
