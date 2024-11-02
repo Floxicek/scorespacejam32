@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxlyee51mcuqw"]
+[gd_scene load_steps=3 format=3 uid="uid://dmub85j6lafvu"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://cdceh87gryt3w" path="res://assets/platform_physics_material.tres" id="1_mu1yc"]
+[ext_resource type="PhysicsMaterial" uid="uid://dp7yo0dajty72" path="res://assets/platform_physics_material.tres" id="1_mu1yc"]
 [ext_resource type="Texture2D" uid="uid://cu3pwtpyqor7g" path="res://assets/platform_mid.png" id="1_pdk6q"]
 
-[node name="PlatformMid" type="StaticBody2D"]
+[node name="PlatformMid" type="StaticBody2D" groups=["Platform"]]
+collision_layer = 3
 physics_material_override = ExtResource("1_mu1yc")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

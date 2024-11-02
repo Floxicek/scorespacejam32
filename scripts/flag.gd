@@ -7,3 +7,4 @@ func _on_body_entered(body):
 		# Maybe show some fireworks...
 		# End score
 		print("Finished with score of: " + str(%UI.stroke_count))
+		SilentWolf.Scores.save_score("Chebuk Debug", %UI.stroke_count)
