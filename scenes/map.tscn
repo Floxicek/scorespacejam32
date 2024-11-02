@@ -1,18 +1,23 @@
-[gd_scene load_steps=17 format=3 uid="uid://bl5uc2yvuyb2t"]
+[gd_scene load_steps=20 format=3 uid="uid://bl5uc2yvuyb2t"]
 
 [ext_resource type="PackedScene" uid="uid://bspxhgfx557x5" path="res://scenes/platform_small.tscn" id="1_3ymyh"]
 [ext_resource type="PackedScene" uid="uid://dxlyee51mcuqw" path="res://scenes/platform_mid.tscn" id="2_e4lk0"]
-[ext_resource type="PackedScene" uid="uid://dywrlg5ftfjdd" path="res://scenes/platform_long.tscn" id="3_khkpd"]
 [ext_resource type="PhysicsMaterial" uid="uid://35e8n4mnpfdk" path="res://assets/player_physics_material.tres" id="4_eyk3u"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="4_tuxay"]
 [ext_resource type="PackedScene" uid="uid://bwurhyg67yn0n" path="res://scenes/sand_platform_long.tscn" id="5_xrmdl"]
 [ext_resource type="Texture2D" uid="uid://858caggshc0b" path="res://assets/ball.png" id="6_6tlcr"]
 [ext_resource type="PackedScene" uid="uid://dhgk6issxedai" path="res://scenes/sand_platform_mid.tscn" id="6_du8v0"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="6_vkak4"]
+[ext_resource type="PackedScene" uid="uid://clr56mgmwp4r1" path="res://scenes/water.tscn" id="7_x2oic"]
+[ext_resource type="PhysicsMaterial" uid="uid://cdceh87gryt3w" path="res://assets/platform_physics_material.tres" id="8_c2qsn"]
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="11_sxms1"]
 [ext_resource type="FontFile" uid="uid://bxibr3cgsdhaa" path="res://assets/fonts/Fredoka-Light.ttf" id="12_5qm5r"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="12_413ee"]
 [ext_resource type="Script" path="res://scripts/safety_net.gd" id="14_xblwq"]
+[ext_resource type="PackedScene" uid="uid://c3bptrg06rcus" path="res://scenes/platform_small_high.tscn" id="15_1jumq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rt6v"]
+size = Vector2(9997, 111)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hfhv"]
 radius = 8.0
@@ -29,39 +34,69 @@ distance = -70.0
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="PlatformSmall5" parent="Environment" instance=ExtResource("1_3ymyh")]
-position = Vector2(-999, -1188)
+position = Vector2(-1484, -1540)
 collision_layer = 3
 
 [node name="Flag" parent="Environment/PlatformSmall5" instance=ExtResource("11_sxms1")]
 position = Vector2(0, -62)
 
 [node name="PlatformSmall3" parent="Environment" instance=ExtResource("1_3ymyh")]
-position = Vector2(-1132, -1245)
-collision_layer = 3
-
-[node name="PlatformLong" parent="Environment" instance=ExtResource("3_khkpd")]
-position = Vector2(1176, 289)
+position = Vector2(-1617, -1597)
 collision_layer = 3
 
 [node name="SandPlatformLong" parent="Environment" instance=ExtResource("5_xrmdl")]
-position = Vector2(411, 200)
+position = Vector2(-141, -233)
 collision_layer = 5
 
 [node name="SandPlatformLong2" parent="Environment" instance=ExtResource("5_xrmdl")]
-position = Vector2(-229, -67)
+position = Vector2(-714, -419)
 collision_layer = 5
 
-[node name="PlatformMid" parent="Environment" instance=ExtResource("2_e4lk0")]
-position = Vector2(-799, -50)
+[node name="PlatformMid2" parent="Environment" instance=ExtResource("2_e4lk0")]
+position = Vector2(-1284, -402)
 
 [node name="SandPlatformLong3" parent="Environment" instance=ExtResource("5_xrmdl")]
-position = Vector2(306, -542)
+position = Vector2(-179, -894)
 
 [node name="SandPlatformMid" parent="Environment" instance=ExtResource("6_du8v0")]
-position = Vector2(-429, -1057)
+position = Vector2(-914, -1409)
+
+[node name="Pond" type="Node2D" parent="Environment"]
+position = Vector2(1408, -332)
+metadata/_edit_group_ = true
+
+[node name="PlatformMid3" parent="Environment/Pond" instance=ExtResource("2_e4lk0")]
+position = Vector2(3, 70)
+
+[node name="Water" parent="Environment/Pond/PlatformMid3" instance=ExtResource("7_x2oic")]
+position = Vector2(2, -82)
+
+[node name="PlatformSmallHigh" parent="Environment/Pond" instance=ExtResource("15_1jumq")]
+position = Vector2(-179, 26)
+
+[node name="PlatformSmallHigh2" parent="Environment/Pond" instance=ExtResource("15_1jumq")]
+position = Vector2(172, 26)
+
+[node name="Ground" type="StaticBody2D" parent="Environment"]
+physics_material_override = ExtResource("8_c2qsn")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Ground"]
+position = Vector2(0.5, 45.5)
+shape = SubResource("RectangleShape2D_1rt6v")
+
+[node name="GroundBack" type="Polygon2D" parent="Environment/Ground"]
+self_modulate = Color(0.278431, 0.278431, 0.278431, 1)
+position = Vector2(0, 79)
+polygon = PackedVector2Array(-5000, -100, 5000, -100, 5000, 0, -5000, 0)
+
+[node name="Ground" type="Polygon2D" parent="Environment/Ground"]
+self_modulate = Color(0.215686, 0.219608, 0.215686, 1)
+position = Vector2(0, 102)
+polygon = PackedVector2Array(-5000, -100, 5000, -100, 5000, 0, -5000, 0)
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(1176, -216)
+position = Vector2(600, -649)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("player")]
@@ -69,6 +104,7 @@ physics_interpolation_mode = 1
 auto_translate_mode = 1
 script = ExtResource("4_tuxay")
 player = NodePath("../PlayerRigid/PlayerSprite")
+ignore_height = -200
 
 [node name="PlayerRigid" type="RigidBody2D" parent="Player" groups=["Player"]]
 z_index = 7
@@ -132,9 +168,11 @@ theme_override_fonts/font = ExtResource("12_5qm5r")
 theme_override_font_sizes/font_size = 81
 text = "1"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="SafetyNet" type="Area2D" parent="."]
-position = Vector2(439, 1423)
+position = Vector2(-31, 1765)
 script = ExtResource("14_xblwq")
 metadata/_edit_group_ = true
 

@@ -8,6 +8,8 @@ extends Camera2D
 @export_category("Follow")
 @export var player: Node2D
 @export var follow_speed:= 3
+@export var ignore_height := 0
+@export var height_offset := -200
 
 var zoom_target = 1.0
 
@@ -22,4 +24,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if player:
-		global_position = lerp(global_position, player.global_position, delta * follow_speed)
+		var target_pos = player.global_position
+		target_pos.y = min(target_pos.y, ignore_height) - height_offset
+		
+		global_position = lerp(global_position, target_pos, delta * follow_speed)

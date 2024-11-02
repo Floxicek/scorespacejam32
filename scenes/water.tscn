@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://clr56mgmwp4r1"]
+
+[ext_resource type="Texture2D" uid="uid://cftai5qa7ysfm" path="res://assets/rect.png" id="1_i1ebx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_164fa"]
+size = Vector2(300, 100)
+
+[node name="Water" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_164fa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.733333, 0.862745, 0.909804, 0.756863)
+scale = Vector2(300, 50)
+texture = ExtResource("1_i1ebx")
