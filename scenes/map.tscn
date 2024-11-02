@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl5uc2yvuyb2t"]
+[gd_scene load_steps=6 format=3 uid="uid://bl5uc2yvuyb2t"]
 
 [ext_resource type="PackedScene" uid="uid://bspxhgfx557x5" path="res://scenes/platform_small.tscn" id="1_3ymyh"]
 [ext_resource type="PackedScene" uid="uid://dxlyee51mcuqw" path="res://scenes/platform_mid.tscn" id="2_e4lk0"]
 [ext_resource type="PackedScene" uid="uid://dywrlg5ftfjdd" path="res://scenes/platform_long.tscn" id="3_khkpd"]
+[ext_resource type="Script" path="res://scripts/camera_controller.gd" id="4_tuxay"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s1j60"]
 
 [node name="Map" type="Node2D"]
 
@@ -25,7 +28,19 @@ position = Vector2(-71, 469)
 position = Vector2(-163, 419)
 
 [node name="PlatformMid2" parent="." instance=ExtResource("2_e4lk0")]
-position = Vector2(1294, 760)
+position = Vector2(1170, 732)
 
 [node name="PlatformLong" parent="." instance=ExtResource("3_khkpd")]
-position = Vector2(1771, 848)
+position = Vector2(1630, 810)
+
+[node name="PlayerTemp" type="RigidBody2D" parent="."]
+position = Vector2(-59, 368)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTemp"]
+shape = SubResource("CircleShape2D_s1j60")
+
+[node name="Camera2D" type="Camera2D" parent="PlayerTemp"]
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("4_tuxay")
