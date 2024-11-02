@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://bl5uc2yvuyb2t"]
+[gd_scene load_steps=22 format=3 uid="uid://bl5uc2yvuyb2t"]
 
 [ext_resource type="PackedScene" uid="uid://bspxhgfx557x5" path="res://scenes/platform_small.tscn" id="1_3ymyh"]
 [ext_resource type="PackedScene" uid="uid://dxlyee51mcuqw" path="res://scenes/platform_mid.tscn" id="2_e4lk0"]
+[ext_resource type="PackedScene" uid="uid://dywrlg5ftfjdd" path="res://scenes/platform_long.tscn" id="3_khkpd"]
 [ext_resource type="PhysicsMaterial" uid="uid://35e8n4mnpfdk" path="res://assets/player_physics_material.tres" id="4_eyk3u"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="4_tuxay"]
 [ext_resource type="PackedScene" uid="uid://bwurhyg67yn0n" path="res://scenes/sand_platform_long.tscn" id="5_xrmdl"]
@@ -22,9 +23,12 @@ size = Vector2(9997, 111)
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hfhv"]
 radius = 8.0
 
-[sub_resource type="Curve" id="Curve_jnxqq"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.852632, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.43956), -3.80298, 0.0, 1, 0]
+[sub_resource type="Curve" id="Curve_umwhh"]
+_data = [Vector2(0.0114613, 1), 0.0, 0.0, 0, 0, Vector2(0.856733, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_akhae"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6517x"]
 distance = -70.0
@@ -45,24 +49,20 @@ position = Vector2(-1617, -1597)
 collision_layer = 3
 
 [node name="SandPlatformLong" parent="Environment" instance=ExtResource("5_xrmdl")]
-position = Vector2(-141, -233)
-collision_layer = 5
-
-[node name="SandPlatformLong2" parent="Environment" instance=ExtResource("5_xrmdl")]
-position = Vector2(-714, -419)
+position = Vector2(-1374, -824)
 collision_layer = 5
 
 [node name="PlatformMid2" parent="Environment" instance=ExtResource("2_e4lk0")]
-position = Vector2(-1284, -402)
+position = Vector2(580, -303)
 
 [node name="SandPlatformLong3" parent="Environment" instance=ExtResource("5_xrmdl")]
-position = Vector2(-179, -894)
+position = Vector2(222, -1120)
 
 [node name="SandPlatformMid" parent="Environment" instance=ExtResource("6_du8v0")]
-position = Vector2(-914, -1409)
+position = Vector2(-942, -1700)
 
 [node name="Pond" type="Node2D" parent="Environment"]
-position = Vector2(1408, -332)
+position = Vector2(-166, -487)
 metadata/_edit_group_ = true
 
 [node name="PlatformMid3" parent="Environment/Pond" instance=ExtResource("2_e4lk0")]
@@ -95,16 +95,32 @@ self_modulate = Color(0.215686, 0.219608, 0.215686, 1)
 position = Vector2(0, 102)
 polygon = PackedVector2Array(-5000, -100, 5000, -100, 5000, 0, -5000, 0)
 
+[node name="PlatformSmall" parent="Environment" instance=ExtResource("1_3ymyh")]
+position = Vector2(-771, -632)
+
+[node name="PlatformSmall2" parent="Environment" instance=ExtResource("1_3ymyh")]
+position = Vector2(-318, -1076)
+
+[node name="PlatformSmall4" parent="Environment" instance=ExtResource("1_3ymyh")]
+position = Vector2(-949, -1135)
+
+[node name="PlatformMid" parent="Environment" instance=ExtResource("2_e4lk0")]
+position = Vector2(-262, -1475)
+
+[node name="PlatformLong" parent="Environment" instance=ExtResource("3_khkpd")]
+position = Vector2(-2146, -1249)
+
 [node name="Player" type="Node2D" parent="."]
 position = Vector2(600, -649)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("player")]
-physics_interpolation_mode = 1
-auto_translate_mode = 1
+process_callback = 0
 script = ExtResource("4_tuxay")
+zoom_min = 0.4
 player = NodePath("../PlayerRigid/PlayerSprite")
 ignore_height = -200
+height_offset = 200
 
 [node name="PlayerRigid" type="RigidBody2D" parent="Player" groups=["Player"]]
 z_index = 7
@@ -118,7 +134,6 @@ script = ExtResource("6_vkak4")
 shape = SubResource("CircleShape2D_4hfhv")
 
 [node name="PlayerSprite" type="Sprite2D" parent="Player/PlayerRigid"]
-self_modulate = Color(0.356863, 0.764706, 0.921569, 1)
 z_index = 10
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_6tlcr")
@@ -146,11 +161,11 @@ texture_progress_offset = Vector2(-16, -16)
 
 [node name="Arrow" type="Line2D" parent="Player/PlayerRigid"]
 scale = Vector2(4, 28)
-points = PackedVector2Array(0, -1, 0, -2.5)
-width = 0.719
-width_curve = SubResource("Curve_jnxqq")
-joint_mode = 2
-end_cap_mode = 2
+points = PackedVector2Array(0, -1, 0, -3, 0, -4)
+width = 2.509
+width_curve = SubResource("Curve_umwhh")
+gradient = SubResource("Gradient_akhae")
+joint_mode = 1
 antialiased = true
 
 [node name="UI" type="CanvasLayer" parent="."]

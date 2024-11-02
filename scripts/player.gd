@@ -17,34 +17,26 @@ enum Layers
 	Layers.SAND: 15
 }
 
+@export var movement_threshold := 3.0
+
 var power: float = 0
 var angle: float = 0
 
 var reset_state = false
 var moveVector: Vector2
 var spawn_pos
-var on_ground = false
 
 func _ready() -> void:
 	self.contact_monitor = true
 	self.max_contacts_reported = 10
 	spawn_pos = global_position
 
+
 func _integrate_forces(state):
 	if reset_state:
 		state.transform = Transform2D(0.0, moveVector)
 		linear_velocity = Vector2.ZERO
 		reset_state = false
-
-	on_ground = false
-	for i in range(state.get_contact_count()):
-		var contact_normal = state.get_contact_local_normal(i)
-		if contact_normal.y < -0.7:  # Check if the normal points upwards
-			on_ground = true
-			break
-
-
-
 
 func reset_position():
 	moveVector = spawn_pos;
@@ -57,10 +49,15 @@ func _process(_delta: float) -> void:
 		angle += angle_speed * _delta
 	angle = clamp(angle, -1.5, 1.5)
 
-	if not on_ground:
+	var is_moving = linear_velocity.length() >= movement_threshold
+	if is_moving:
+		#$Arrow.default_color = Color(255,255,255,.3)
+		$Arrow.gradient.colors[0] = Color(255,255,255,.3)
 		power = 0
+		$ProgressBar.value = power / max_power * 100
 		return
 
+	$Arrow.gradient.colors[0] = Color.WHITE
 	if Input.is_action_pressed("ui_accept"):
 		power += power_speed * _delta
 		power = clamp(power, 0, max_power)
