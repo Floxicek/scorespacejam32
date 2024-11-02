@@ -21,5 +21,7 @@ func _process(delta):
 	zoom_target = clamp(zoom_target, zoom_min, zoom_max)
 	var z = lerp(zoom.x, zoom_target, zoom_increment * delta * 60 * zoom_speed)
 	zoom = Vector2(z,z)
+
+func _physics_process(delta):
 	if player:
 		global_position = lerp(global_position, player.global_position, delta * follow_speed)

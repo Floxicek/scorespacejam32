@@ -20,21 +20,24 @@ enum Layers
 var power: float = 0
 var angle: float = 0
 
+var reset_state = false
+var moveVector: Vector2
+var spawn_pos
+
+
 func _ready() -> void:
 	self.contact_monitor = true
 	self.max_contacts_reported = 10
-
-
-var reset_state = false
-var moveVector: Vector2
+	spawn_pos = global_position
 
 func _integrate_forces(state):
 	if reset_state:
 		state.transform = Transform2D(0.0, moveVector)
+		linear_velocity = Vector2.ZERO
 		reset_state = false
 
-func move_body(targetPos: Vector2):
-	moveVector = targetPos;
+func reset_position():
+	moveVector = spawn_pos;
 	reset_state = true;
 
 func _process(_delta: float) -> void:
