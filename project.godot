@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 Global="*res://global.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+Score="*res://scripts/autoload/score.gd"
 
 [display]
 

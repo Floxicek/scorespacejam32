@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bl5uc2yvuyb2t"]
+[gd_scene load_steps=23 format=3 uid="uid://bl5uc2yvuyb2t"]
 
 [ext_resource type="PackedScene" uid="uid://bspxhgfx557x5" path="res://scenes/platform_small.tscn" id="1_3ymyh"]
 [ext_resource type="PackedScene" uid="uid://dxlyee51mcuqw" path="res://scenes/platform_mid.tscn" id="2_e4lk0"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="11_sxms1"]
 [ext_resource type="FontFile" uid="uid://bxibr3cgsdhaa" path="res://assets/fonts/Fredoka-Light.ttf" id="12_5qm5r"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="12_413ee"]
+[ext_resource type="Texture2D" uid="uid://pg2mp301tuiv" path="res://assets/arrow.png" id="14_a4cqp"]
 [ext_resource type="Script" path="res://scripts/safety_net.gd" id="14_xblwq"]
 [ext_resource type="PackedScene" uid="uid://c3bptrg06rcus" path="res://scenes/platform_small_high.tscn" id="15_1jumq"]
 
@@ -112,7 +113,6 @@ position = Vector2(-2146, -1249)
 
 [node name="Player" type="Node2D" parent="."]
 position = Vector2(600, -649)
-metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("player")]
 process_callback = 0
@@ -159,7 +159,8 @@ fill_mode = 4
 texture_progress = ExtResource("6_6tlcr")
 texture_progress_offset = Vector2(-16, -16)
 
-[node name="Arrow" type="Line2D" parent="Player/PlayerRigid"]
+[node name="Arrowa" type="Line2D" parent="Player/PlayerRigid"]
+visible = false
 scale = Vector2(4, 28)
 points = PackedVector2Array(0, -1, 0, -3, 0, -4)
 width = 2.509
@@ -167,6 +168,13 @@ width_curve = SubResource("Curve_umwhh")
 gradient = SubResource("Gradient_akhae")
 joint_mode = 1
 antialiased = true
+
+[node name="Arrow" type="Node2D" parent="Player/PlayerRigid"]
+
+[node name="Arrow" type="Sprite2D" parent="Player/PlayerRigid/Arrow"]
+position = Vector2(1, -81)
+scale = Vector2(0.179537, 0.179537)
+texture = ExtResource("14_a4cqp")
 
 [node name="UI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

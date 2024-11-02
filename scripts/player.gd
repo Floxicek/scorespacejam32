@@ -52,12 +52,15 @@ func _process(_delta: float) -> void:
 	var is_moving = linear_velocity.length() >= movement_threshold
 	if is_moving:
 		#$Arrow.default_color = Color(255,255,255,.3)
-		$Arrow.gradient.colors[0] = Color(255,255,255,.3)
+		#$Arrow.gradient.colors[0] = Color(255,255,255,.3)
+		$Arrow/Arrow.self_modulate = Color(255,255,255,.3)
 		power = 0
 		$ProgressBar.value = power / max_power * 100
 		return
 
-	$Arrow.gradient.colors[0] = Color.WHITE
+	#$Arrow.gradient.colors[0] = Color.WHITE
+	
+	$Arrow/Arrow.self_modulate = Color(255,255,255)
 	if Input.is_action_pressed("ui_accept"):
 		power += power_speed * _delta
 		power = clamp(power, 0, max_power)
