@@ -9,12 +9,12 @@ enum Layers
 
 @export var max_power: float = 1500
 @export var power_speed: float = 1000
-@export var angle_speed: float = 1
+@export var angle_speed: float = 1.5
 
 # map of angular dampening values for each layer
 @export var layer_damp: Dictionary = {
-	Layers.PLATFORM: 3,
-	Layers.SAND: 15
+	Layers.PLATFORM: 4,
+	Layers.SAND: 18
 }
 
 @export var movement_threshold := 3.0
@@ -77,7 +77,7 @@ func _physics_process(_delta):
 
 
 func _on_body_entered(body: Node) -> void:
-	if body.get_parent().name != "Environment":
+	if not body.is_in_group("Platform"):
 		return
 
 	var body_layers = body.get_collision_layer()

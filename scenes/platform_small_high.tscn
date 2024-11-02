@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3bptrg06rcus"]
 
-[ext_resource type="PackedScene" uid="uid://bspxhgfx557x5" path="res://scenes/platform_small.tscn" id="1_qa3ql"]
+[ext_resource type="PackedScene" uid="uid://bpm8mkbr2jcqf" path="res://scenes/platform_small.tscn" id="1_qa3ql"]
 [ext_resource type="Texture2D" uid="uid://csg22xyvarvf2" path="res://assets/platform_small_high.png" id="2_3i8t1"]
 
-[node name="PlatformSmallHigh" instance=ExtResource("1_qa3ql")]
+[node name="PlatformSmallHigh" groups=["Platform"] instance=ExtResource("1_qa3ql")]
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 position = Vector2(0, -19)

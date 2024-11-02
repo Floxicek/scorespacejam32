@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhgk6issxedai"]
+[gd_scene load_steps=3 format=3 uid="uid://wbqynctxehg1"]
 
-[ext_resource type="PackedScene" uid="uid://dxlyee51mcuqw" path="res://scenes/platform_mid.tscn" id="1_jhxo7"]
-[ext_resource type="PhysicsMaterial" uid="uid://bmamq3cdomt8" path="res://assets/sand_platform_physics_material.tres" id="2_yk5yp"]
+[ext_resource type="PackedScene" uid="uid://dmub85j6lafvu" path="res://scenes/platform_mid.tscn" id="1_jhxo7"]
+[ext_resource type="PhysicsMaterial" uid="uid://b76rmey2j6x54" path="res://assets/sand_platform_physics_material.tres" id="2_yk5yp"]
 
-[node name="SandPlatformMid" instance=ExtResource("1_jhxo7")]
+[node name="SandPlatformMid" groups=["Platform"] instance=ExtResource("1_jhxo7")]
+collision_layer = 5
 physics_material_override = ExtResource("2_yk5yp")
 
 [node name="Platform3" parent="." index="1"]
