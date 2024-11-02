@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cipkjr0yuy07q"]
+
+[ext_resource type="PackedScene" uid="uid://bspxhgfx557x5" path="res://scenes/platform_small.tscn" id="1_dsqtl"]
+[ext_resource type="PhysicsMaterial" uid="uid://bmamq3cdomt8" path="res://assets/sand_platform_physics_material.tres" id="2_8eqyy"]
+
+[node name="SandPlatformSmall" instance=ExtResource("1_dsqtl")]
+physics_material_override = ExtResource("2_8eqyy")
+
+[node name="Platform3" parent="." index="1"]
+self_modulate = Color(0.913725, 0.827451, 0.65098, 1)
+
+[node name="Platform2" parent="." index="2"]
+self_modulate = Color(0.894118, 0.760784, 0.478431, 1)

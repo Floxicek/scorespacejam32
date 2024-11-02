@@ -1,46 +1,72 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl5uc2yvuyb2t"]
+[gd_scene load_steps=10 format=3 uid="uid://bl5uc2yvuyb2t"]
 
 [ext_resource type="PackedScene" uid="uid://bspxhgfx557x5" path="res://scenes/platform_small.tscn" id="1_3ymyh"]
 [ext_resource type="PackedScene" uid="uid://dxlyee51mcuqw" path="res://scenes/platform_mid.tscn" id="2_e4lk0"]
 [ext_resource type="PackedScene" uid="uid://dywrlg5ftfjdd" path="res://scenes/platform_long.tscn" id="3_khkpd"]
+[ext_resource type="PhysicsMaterial" uid="uid://35e8n4mnpfdk" path="res://assets/player_physics_material.tres" id="4_eyk3u"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="4_tuxay"]
+[ext_resource type="PackedScene" uid="uid://bwurhyg67yn0n" path="res://scenes/sand_platform_long.tscn" id="5_xrmdl"]
+[ext_resource type="Texture2D" uid="uid://858caggshc0b" path="res://assets/ball.png" id="6_6tlcr"]
+[ext_resource type="PackedScene" uid="uid://cipkjr0yuy07q" path="res://scenes/sand_platform_small.tscn" id="6_7mx0e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s1j60"]
 
 [node name="Map" type="Node2D"]
 
-[node name="PlatformSmall" parent="." instance=ExtResource("1_3ymyh")]
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="PlatformSmall" parent="Environment" instance=ExtResource("1_3ymyh")]
 position = Vector2(240, 616)
 
-[node name="PlatformSmall6" parent="." instance=ExtResource("1_3ymyh")]
-position = Vector2(722, 688)
+[node name="PlatformSmall6" parent="Environment" instance=ExtResource("1_3ymyh")]
+position = Vector2(834, 624)
 
-[node name="PlatformSmall2" parent="." instance=ExtResource("1_3ymyh")]
+[node name="PlatformSmall2" parent="Environment" instance=ExtResource("1_3ymyh")]
 position = Vector2(129, 562)
 
-[node name="PlatformSmall3" parent="." instance=ExtResource("1_3ymyh")]
+[node name="PlatformSmall3" parent="Environment" instance=ExtResource("1_3ymyh")]
 position = Vector2(28, 508)
 
-[node name="PlatformSmall4" parent="." instance=ExtResource("1_3ymyh")]
+[node name="PlatformSmall4" parent="Environment" instance=ExtResource("1_3ymyh")]
 position = Vector2(-71, 469)
 
-[node name="PlatformSmall5" parent="." instance=ExtResource("1_3ymyh")]
+[node name="PlatformSmall5" parent="Environment" instance=ExtResource("1_3ymyh")]
 position = Vector2(-163, 419)
 
-[node name="PlatformMid2" parent="." instance=ExtResource("2_e4lk0")]
+[node name="PlatformMid2" parent="Environment" instance=ExtResource("2_e4lk0")]
 position = Vector2(1170, 732)
 
-[node name="PlatformLong" parent="." instance=ExtResource("3_khkpd")]
+[node name="PlatformLong" parent="Environment" instance=ExtResource("3_khkpd")]
 position = Vector2(1630, 810)
 
+[node name="PlatformLong3" parent="Environment" instance=ExtResource("3_khkpd")]
+position = Vector2(885, 1062)
+
+[node name="PlatformLong2" parent="Environment" instance=ExtResource("3_khkpd")]
+position = Vector2(196, 922)
+
+[node name="PlatformSmall7" parent="Environment" instance=ExtResource("6_7mx0e")]
+position = Vector2(418, 724)
+
+[node name="SandPlatformLong" parent="Environment" instance=ExtResource("5_xrmdl")]
+position = Vector2(713, 871)
+
 [node name="PlayerTemp" type="RigidBody2D" parent="."]
-position = Vector2(-59, 368)
+position = Vector2(8, 239)
+physics_material_override = ExtResource("4_eyk3u")
+angular_damp = 3.0
 metadata/_edit_group_ = true
+
+[node name="Ball" type="Sprite2D" parent="PlayerTemp"]
+self_modulate = Color(0.356863, 0.764706, 0.921569, 1)
+scale = Vector2(0.34375, 0.34375)
+texture = ExtResource("6_6tlcr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTemp"]
 shape = SubResource("CircleShape2D_s1j60")
 
 [node name="Camera2D" type="Camera2D" parent="PlayerTemp"]
+physics_interpolation_mode = 1
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_tuxay")

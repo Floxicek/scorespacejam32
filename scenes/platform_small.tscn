@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bspxhgfx557x5"]
+[gd_scene load_steps=3 format=3 uid="uid://bspxhgfx557x5"]
 
 [ext_resource type="Texture2D" uid="uid://7bq8tki5ldb6" path="res://assets/platform_small.png" id="1_k4xat"]
+[ext_resource type="PhysicsMaterial" uid="uid://cdceh87gryt3w" path="res://assets/platform_physics_material.tres" id="1_u8w65"]
 
 [node name="PlatformSmall" type="StaticBody2D"]
+physics_material_override = ExtResource("1_u8w65")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -10)
