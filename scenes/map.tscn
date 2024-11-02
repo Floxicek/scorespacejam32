@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="4_tuxay"]
 [ext_resource type="PackedScene" uid="uid://bwurhyg67yn0n" path="res://scenes/sand_platform_long.tscn" id="5_xrmdl"]
 [ext_resource type="Texture2D" uid="uid://858caggshc0b" path="res://assets/ball.png" id="6_6tlcr"]
-[ext_resource type="PackedScene" uid="uid://cipkjr0yuy07q" path="res://scenes/sand_platform_small.tscn" id="6_7mx0e"]
+[ext_resource type="PackedScene" uid="uid://dhgk6issxedai" path="res://scenes/sand_platform_mid.tscn" id="6_du8v0"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="6_vkak4"]
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="11_sxms1"]
 [ext_resource type="FontFile" uid="uid://bxibr3cgsdhaa" path="res://assets/fonts/Fredoka-Light.ttf" id="12_5qm5r"]
@@ -22,64 +22,47 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.852632, 1), 0.0, 0.0, 0, 0, Ve
 point_count = 3
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6517x"]
+distance = -70.0
 
 [node name="Map" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 
-[node name="PlatformSmall" parent="Environment" instance=ExtResource("1_3ymyh")]
-position = Vector2(240, 616)
+[node name="PlatformSmall5" parent="Environment" instance=ExtResource("1_3ymyh")]
+position = Vector2(-999, -1188)
 collision_layer = 3
 
-[node name="PlatformSmall6" parent="Environment" instance=ExtResource("1_3ymyh")]
-position = Vector2(834, 624)
-collision_layer = 3
-
-[node name="PlatformSmall2" parent="Environment" instance=ExtResource("1_3ymyh")]
-position = Vector2(129, 562)
-collision_layer = 3
+[node name="Flag" parent="Environment/PlatformSmall5" instance=ExtResource("11_sxms1")]
+position = Vector2(0, -62)
 
 [node name="PlatformSmall3" parent="Environment" instance=ExtResource("1_3ymyh")]
-position = Vector2(28, 508)
-collision_layer = 3
-
-[node name="PlatformSmall4" parent="Environment" instance=ExtResource("1_3ymyh")]
-position = Vector2(-71, 469)
-collision_layer = 3
-
-[node name="PlatformSmall5" parent="Environment" instance=ExtResource("1_3ymyh")]
-position = Vector2(-163, 419)
-collision_layer = 3
-
-[node name="PlatformMid2" parent="Environment" instance=ExtResource("2_e4lk0")]
-position = Vector2(1170, 732)
+position = Vector2(-1132, -1245)
 collision_layer = 3
 
 [node name="PlatformLong" parent="Environment" instance=ExtResource("3_khkpd")]
-position = Vector2(1630, 810)
+position = Vector2(1176, 289)
 collision_layer = 3
-
-[node name="PlatformLong3" parent="Environment" instance=ExtResource("3_khkpd")]
-position = Vector2(885, 1062)
-collision_layer = 3
-
-[node name="PlatformLong2" parent="Environment" instance=ExtResource("3_khkpd")]
-position = Vector2(196, 922)
-collision_layer = 3
-
-[node name="PlatformSmall7" parent="Environment" instance=ExtResource("6_7mx0e")]
-position = Vector2(418, 724)
-collision_layer = 5
 
 [node name="SandPlatformLong" parent="Environment" instance=ExtResource("5_xrmdl")]
-position = Vector2(713, 871)
+position = Vector2(411, 200)
 collision_layer = 5
 
-[node name="Flag" parent="Environment" instance=ExtResource("11_sxms1")]
-position = Vector2(-167, 357)
+[node name="SandPlatformLong2" parent="Environment" instance=ExtResource("5_xrmdl")]
+position = Vector2(-229, -67)
+collision_layer = 5
+
+[node name="PlatformMid" parent="Environment" instance=ExtResource("2_e4lk0")]
+position = Vector2(-799, -50)
+
+[node name="SandPlatformLong3" parent="Environment" instance=ExtResource("5_xrmdl")]
+position = Vector2(306, -542)
+
+[node name="SandPlatformMid" parent="Environment" instance=ExtResource("6_du8v0")]
+position = Vector2(-429, -1057)
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(-170, 0)
+position = Vector2(1176, -216)
+metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("player")]
 physics_interpolation_mode = 1
@@ -91,7 +74,7 @@ player = NodePath("../PlayerRigid/PlayerSprite")
 z_index = 7
 physics_material_override = ExtResource("4_eyk3u")
 gravity_scale = 1.5
-max_contacts_reported = 1
+max_contacts_reported = 2
 angular_damp = 5.0
 script = ExtResource("6_vkak4")
 
@@ -121,7 +104,6 @@ scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(16, 16)
 size_flags_horizontal = 6
 size_flags_vertical = 6
-value = 100.0
 fill_mode = 4
 texture_progress = ExtResource("6_6tlcr")
 texture_progress_offset = Vector2(-16, -16)

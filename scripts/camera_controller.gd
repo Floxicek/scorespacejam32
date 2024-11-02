@@ -12,8 +12,6 @@ extends Camera2D
 var zoom_target = 1.0
 
 func _process(delta):
-	var zoom_current = zoom
-	
 	if Input.is_action_just_released("zoom_in"):
 		zoom_target += zoom_increment
 	elif Input.is_action_just_released("zoom_out"):

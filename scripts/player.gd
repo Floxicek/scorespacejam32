@@ -23,7 +23,7 @@ var angle: float = 0
 var reset_state = false
 var moveVector: Vector2
 var spawn_pos
-
+var on_ground = false
 
 func _ready() -> void:
 	self.contact_monitor = true
@@ -36,6 +36,16 @@ func _integrate_forces(state):
 		linear_velocity = Vector2.ZERO
 		reset_state = false
 
+	on_ground = false
+	for i in range(state.get_contact_count()):
+		var contact_normal = state.get_contact_local_normal(i)
+		if contact_normal.y < -0.7:  # Check if the normal points upwards
+			on_ground = true
+			break
+
+
+
+
 func reset_position():
 	moveVector = spawn_pos;
 	reset_state = true;
@@ -47,6 +57,10 @@ func _process(_delta: float) -> void:
 		angle += angle_speed * _delta
 	angle = clamp(angle, -1.5, 1.5)
 
+	if not on_ground:
+		power = 0
+		return
+
 	if Input.is_action_pressed("ui_accept"):
 		power += power_speed * _delta
 		power = clamp(power, 0, max_power)
@@ -57,7 +71,7 @@ func _process(_delta: float) -> void:
 	
 	$ProgressBar.value = power / max_power * 100
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	$Arrow.rotation = angle - self.rotation
 	$ProgressBar.rotation = - self.rotation
 
