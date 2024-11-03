@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://pg2mp301tuiv" path="res://assets/arrow.png" id="5_cgmkp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hfhv"]
-radius = 8.0
+radius = 9.0
 
 [node name="Player" type="Node2D"]
 position = Vector2(600, -649)
@@ -30,13 +30,14 @@ angular_damp = 5.0
 script = ExtResource("3_ur02k")
 movement_threshold = 6.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRigid"]
-shape = SubResource("CircleShape2D_4hfhv")
-
 [node name="PlayerSprite" type="Sprite2D" parent="PlayerRigid"]
 z_index = 10
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_44ji3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRigid"]
+shape = SubResource("CircleShape2D_4hfhv")
+debug_color = Color(0.95527, 0.213129, 0, 0.42)
 
 [node name="ProgressBar" type="TextureProgressBar" parent="PlayerRigid"]
 anchors_preset = 8
