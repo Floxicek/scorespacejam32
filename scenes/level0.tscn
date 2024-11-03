@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxo6d3njabbtg" path="res://assets/kenney-input/xbox_button_a.png" id="4_gmatk"]
 [ext_resource type="PackedScene" uid="uid://cp36kiaghry3t" path="res://scenes/player.tscn" id="8_os17w"]
 [ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="9_xb0m2"]
-[ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="10_b8lpw"]
+[ext_resource type="PackedScene" path="res://scenes/safety_net.tscn" id="10_b8lpw"]
 [ext_resource type="TileSet" uid="uid://2ug3u3nxywaj" path="res://assets/tileset/tileset.tres" id="11_hxs5t"]
 [ext_resource type="Texture2D" uid="uid://cu0rqdmx2keep" path="res://assets/kenney-input/aim_combined.png" id="12_3vcbg"]
 [ext_resource type="FontFile" uid="uid://objrniu567jt" path="res://assets/fonts/Fredoka-Medium.ttf" id="13_ntubx"]
@@ -12,59 +12,61 @@
 
 [node name="Map" type="Node2D"]
 
-[node name="Map" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD1/wAAAAABAAIAAAD2/wAAAAACAAAAAAD3/wAAAAACAAAAAAD4/wAAAAACAAAAAAD5/wAAAAACAAAAAAD6/wAAAAACAAAAAAD7/wAAAAACAAAAAAD8/wAAAAACAAAAAAD9/wAAAAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAADAAIAAAAFAP//AAADAAEAAAAFAP7/AAADAAEAAAAFAP3/AAADAAEAAAAFAPz/AAADAAEAAAAFAPv/AAADAAEAAAAFAPr/AAADAAEAAAAFAPn/AAADAAEAAAAFAPj/AAADAAEAAAAFAPf/AAADAAEAAAAFAPb/AAADAAEAAAAFAPX/AAADAAEAAAAFAPT/AAADAAEAAAAFAPP/AAADAAEAAAAFAPL/AAADAAEAAAAFAPH/AAADAAEAAAAFAPD/AAADAAEAAAAFAO//AAADAAEAAAAFAO7/AAADAAEAAAAFAO3/AAADAAEAAAAFAOz/AAADAAEAAAAFAOv/AAADAAEAAAD1////AAADAAEAAAD1//7/AAADAAEAAAD1//3/AAADAAEAAAD1//z/AAADAAEAAAD1//v/AAADAAEAAAD1//r/AAADAAEAAAD1//n/AAADAAEAAAD1//j/AAADAAEAAAD1//f/AAADAAEAAAD1//b/AAADAAEAAAD1//X/AAADAAEAAAD1//T/AAADAAEAAAD1//P/AAADAAEAAAD1//L/AAADAAEAAAD1//H/AAADAAEAAAD1//D/AAADAAEAAAD1/+//AAADAAEAAAD1/+7/AAADAAEAAAD1/+3/AAADAAEAAAD1/+z/AAADAAEAAAD1/+v/AAADAAEAAAD1/+r/AAAAAAEAAAAFAOr/AAAAAAEAAAA=")
-tile_set = ExtResource("11_hxs5t")
-
-[node name="MapSand" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAABAP3/AQAEAAIAAAACAP3/AQAFAAIAAAD5//n/AQAEAAIAAAD6//n/AQACAAAAAAD7//n/AQACAAAAAAD8//n/AQAFAAIAAAAAAPX/AQAEAAIAAAABAPX/AQACAAAAAAACAPX/AQACAAAAAAADAPX/AQAFAAIAAAD3//L/AQAEAAIAAAD4//L/AQACAAAAAAD5//L/AQACAAAAAAD6//L/AQAFAAIAAAA=")
-tile_set = ExtResource("11_hxs5t")
-
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Keybinds" type="Node2D" parent="Environment"]
 modulate = Color(0.215686, 0.219608, 0.215686, 1)
 
 [node name="AimCombined" type="Sprite2D" parent="Environment/Keybinds"]
-position = Vector2(-566, -345)
+position = Vector2(-474, -285)
 texture = ExtResource("12_3vcbg")
 
 [node name="Label" type="Label" parent="Environment/Keybinds"]
-offset_left = -668.0
-offset_top = -508.0
-offset_right = -467.0
-offset_bottom = -452.0
+offset_left = -576.0
+offset_top = -448.0
+offset_right = -375.0
+offset_bottom = -392.0
 theme_override_fonts/font = ExtResource("13_ntubx")
 theme_override_font_sizes/font_size = 41
 text = "Aim using"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="XboxButtonA" type="Sprite2D" parent="Environment/Keybinds"]
-position = Vector2(-229, -425)
+position = Vector2(-192, -352)
 texture = ExtResource("4_gmatk")
 
 [node name="Label2" type="Label" parent="Environment/Keybinds"]
-offset_left = -352.0
-offset_top = -508.0
-offset_right = -112.0
-offset_bottom = -452.0
+offset_left = -320.0
+offset_top = -448.0
+offset_right = -80.0
+offset_bottom = -392.0
 theme_override_fonts/font = ExtResource("13_ntubx")
 theme_override_font_sizes/font_size = 41
 text = "Charge using"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="KeyboardSpace" type="Sprite2D" parent="Environment/Keybinds"]
-position = Vector2(-223, -349)
+position = Vector2(-192, -288)
 texture = ExtResource("16_w76aa")
 
 [node name="Flag" parent="Environment" instance=ExtResource("2_012ry")]
-position = Vector2(-706, -1394)
+position = Vector2(-512, -1600)
+
+[node name="Map" type="TileMapLayer" parent="Environment"]
+tile_map_data = PackedByteArray("AAD6////AAACAAAAAAD7////AAACAAAAAAD8////AAACAAAAAAD9////AAACAAAAAAD+////AAACAAAAAAD/////AAACAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAACAP//AAACAAAAAAADAP//AAACAAAAAAAEAP//AAACAAAAAAAFAP//AAACAAAAAAAGAOr/AAABAAEAAAAGAOv/AAABAAEAAAAGAOz/AAABAAEAAAAGAO3/AAABAAEAAAAGAO7/AAABAAEAAAAGAO//AAABAAEAAAAGAPD/AAABAAEAAAAGAPH/AAABAAEAAAAGAPL/AAABAAEAAAAGAPP/AAABAAEAAAAGAPT/AAABAAEAAAAGAPX/AAABAAEAAAAGAPb/AAABAAEAAAAGAPf/AAABAAEAAAAGAPj/AAABAAEAAAAGAPn/AAABAAEAAAAGAPr/AAABAAEAAAAGAPv/AAABAAEAAAAGAPz/AAABAAEAAAAGAP3/AAABAAEAAAAGAP7/AAABAAEAAAD5//7/AAADAAEAAAD5//3/AAADAAEAAAD5//z/AAADAAEAAAD5//v/AAADAAEAAAD5//r/AAADAAEAAAD5//n/AAADAAEAAAD5//j/AAADAAEAAAD5//f/AAADAAEAAAD5//b/AAADAAEAAAD5//X/AAADAAEAAAD5//T/AAADAAEAAAD5//P/AAADAAEAAAD5//L/AAADAAEAAAD5//H/AAADAAEAAAD5//D/AAADAAEAAAD5/+//AAADAAEAAAD5/+7/AAADAAEAAAD5/+3/AAADAAEAAAD5/+z/AAADAAEAAAD5/+v/AAADAAEAAAD5/+r/AAADAAEAAAAGAP//AAABAAEAAAD5////AAADAAEAAAD5/wAAAAACAAEAAAD6/wAAAAACAAEAAAD7/wAAAAACAAEAAAD8/wAAAAACAAEAAAD9/wAAAAACAAEAAAD+/wAAAAACAAEAAAD//wAAAAACAAEAAAAAAAAAAAACAAEAAAABAAAAAAACAAEAAAACAAAAAAACAAEAAAADAAAAAAACAAEAAAAEAAAAAAACAAEAAAAFAAAAAAACAAEAAAAGAAAAAAACAAEAAAABAPT/AAAEAAIAAAACAPT/AAACAAAAAAD9//D/AAAFAAIAAAD8//D/AAACAAAAAAD7//D/AAACAAAAAAD6//D/AAACAAAAAAAEAPT/AAAFAAIAAAADAPT/AAACAAAAAAD5/93/AAADAAEAAAD5/97/AAADAAEAAAD5/9//AAADAAEAAAD5/+D/AAADAAEAAAD5/+H/AAADAAEAAAD5/+L/AAADAAEAAAD5/+P/AAADAAEAAAD5/+T/AAADAAEAAAD5/+X/AAADAAEAAAD5/+b/AAADAAEAAAD5/+f/AAADAAEAAAD5/+j/AAADAAEAAAD5/+n/AAADAAEAAAAGAN3/AAABAAEAAAAGAN7/AAABAAEAAAAGAN//AAABAAEAAAAGAOD/AAABAAEAAAAGAOH/AAABAAEAAAAGAOL/AAABAAEAAAAGAOP/AAABAAEAAAAGAOT/AAABAAEAAAAGAOX/AAABAAEAAAAGAOb/AAABAAEAAAAGAOf/AAABAAEAAAAGAOj/AAABAAEAAAAGAOn/AAABAAEAAAA=")
+tile_set = ExtResource("11_hxs5t")
+
+[node name="MapSand" type="TileMapLayer" parent="Environment"]
+tile_map_data = PackedByteArray("AAACAPz/AQAEAAIAAAADAPz/AQACAAAAAAAEAPz/AQACAAAAAAAFAPz/AQACAAAAAAD6//j/AQACAAAAAAD7//j/AQACAAAAAAD8//j/AQACAAAAAAD9//j/AQAFAAIAAAA=")
+tile_set = ExtResource("11_hxs5t")
 
 [node name="Player" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("8_os17w")]
-position = Vector2(-1, -204)
-tilemap = NodePath("../Map")
+position = Vector2(0, -192)
+tilemap = NodePath("../Environment/Map")
 
 [node name="UI" parent="." instance=ExtResource("9_xb0m2")]
 
