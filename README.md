@@ -3,7 +3,8 @@ Game we made for [Score space jam](https://itch.io/jam/scorejam32)
 
 ## Installation
 
-using godot 4.3 stable## Colors
+using godot 4.3 stable
+## Colors
 
 | Color        | Hex Code |
 | ------------ | -------- |
