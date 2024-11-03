@@ -1,16 +1,13 @@
 extends Area2D
 
-@export var ui: Control
+@export var ui: CanvasLayer
 
 func _ready():
 	Score.start_game()
 
 func _on_body_entered(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and Score.game_is_running:
 		print("Winnniiing")
-		# Play win animation
-		# Maybe show some fireworks...
-		# End score
 		Score.level_finished()
 		$Timer.start()
 		$CPUParticles2D.restart()

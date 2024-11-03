@@ -10,7 +10,7 @@ func update_strokes(new_stroke):
 	
 
 func show_scoreboard():
-	$Scoreboard.show()
+	$Scoreboard.show_me()
 
 func _on_timer_timeout():
 	show_scoreboard()

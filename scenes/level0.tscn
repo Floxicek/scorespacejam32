@@ -59,11 +59,12 @@ vertical_alignment = 1
 position = Vector2(-223, -349)
 texture = ExtResource("16_w76aa")
 
-[node name="Flag" parent="Environment" instance=ExtResource("2_012ry")]
+[node name="Flag" parent="Environment" node_paths=PackedStringArray("ui") instance=ExtResource("2_012ry")]
 position = Vector2(-706, -1394)
+ui = NodePath("../../UI")
 
 [node name="Player" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("8_os17w")]
-position = Vector2(-1, -204)
+position = Vector2(-596, -1454)
 tilemap = NodePath("../Map")
 
 [node name="UI" parent="." instance=ExtResource("9_xb0m2")]

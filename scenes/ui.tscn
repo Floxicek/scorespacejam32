@@ -29,10 +29,6 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
 [node name="Scoreboard" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -43,6 +39,7 @@ grow_vertical = 2
 script = ExtResource("3_vrfbq")
 
 [node name="UsernameInput" type="Panel" parent="Scoreboard"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,17 +137,21 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 30
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Scoreboard/Scoreboard/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Scoreboard/Scoreboard/MarginContainer"]
 layout_mode = 2
 
-[node name="ScoreboardVBox" type="VBoxContainer" parent="Scoreboard/Scoreboard/MarginContainer/ScrollContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Scoreboard/Scoreboard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScoreboardVBox" type="VBoxContainer" parent="Scoreboard/Scoreboard/MarginContainer/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 10
-alignment = 1
 
-[node name="Label" type="Label" parent="Scoreboard/Scoreboard/MarginContainer/ScrollContainer/ScoreboardVBox"]
+[node name="Scoreboard" type="Label" parent="Scoreboard/Scoreboard/MarginContainer/VBoxContainer/ScrollContainer/ScoreboardVBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hjsla")
 theme_override_font_sizes/font_size = 31
@@ -158,8 +159,14 @@ text = "SCOREBOARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Continue" type="Button" parent="Scoreboard/Scoreboard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
 [node name="AnimationOnShow" type="Node" parent="Scoreboard/Scoreboard"]
 script = ExtResource("3_spow0")
 transition_type = 2
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Scoreboard/UsernameInput/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="Scoreboard" method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Scoreboard/UsernameInput/MarginContainer/VBoxContainer/HBoxContainer/SumbitButton" to="Scoreboard" method="_on_username_sumbit_button_pressed"]
+[connection signal="pressed" from="Scoreboard/Scoreboard/MarginContainer/VBoxContainer/Continue" to="Scoreboard" method="_on_continue_pressed"]

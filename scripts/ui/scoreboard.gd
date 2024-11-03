@@ -20,19 +20,31 @@ func _on_username_cancel_button_pressed():
 func _on_username_sumbit_button_pressed():
 	if not %Username.text:
 		return
+	username = %Username.text
 	var sc = Score.get_score_for_leaderboard()
 	if not sc == -1:
-		await SilentWolf.Scores.save_score(%Username.text, sc)
+		SilentWolf.Scores.save_score(%Username.text, sc)
 	show_me()
 
 func show_scoreboard():
+	print("Showing scoreboard")
 	$UsernameInput.hide()
 	$Scoreboard.show()
-	var sw_result: Dictionary = await SilentWolf.Scores.get_scores().sw_get_scores_complete
-	scoreboards = sw_result.scores
+	await get_tree().create_timer(3).timeout
+	var sw_result = await SilentWolf.Scores.get_scores(200).sw_get_scores_complete
+	var scoreboards = sw_result.scores
 	print("Scores: " + str(sw_result.scores))
 	
 	for i in scoreboards:
 		var lab = Label.new()
 		lab.text = str(i["player_name"]) + " " + str(Score.read_score_from_leaderboard(i["score"]))
 		%ScoreboardVBox.add_child(lab)
+
+
+func _on_continue_pressed():
+	$Scoreboard.hide()
+	$UsernameInput.hide()
+	for c in %ScoreboardVBox.get_children():
+		if not c.name == "Scoreboard":
+			c.queue_free()
+	SceneManager.new_scene(1)
