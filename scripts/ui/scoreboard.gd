@@ -1,18 +1,21 @@
 extends Control
 
 var scoreboards
+var username = ""
 
 func _ready():
 	#SilentWolf.Scores.wipe_leaderboard()
 	$Scoreboard.hide()
 	$UsernameInput.hide()
 
-	$UsernameInput.show()
-
+func show_me():
+	if not username:
+		$UsernameInput.show()
+	else:
+		show_scoreboard()
 
 func _on_username_cancel_button_pressed():
 	show_scoreboard()
-
 
 func _on_username_sumbit_button_pressed():
 	if not %Username.text:
@@ -20,8 +23,7 @@ func _on_username_sumbit_button_pressed():
 	var sc = Score.get_score_for_leaderboard()
 	if not sc == -1:
 		await SilentWolf.Scores.save_score(%Username.text, sc)
-	show_scoreboard()
-
+	show_me()
 
 func show_scoreboard():
 	$UsernameInput.hide()
@@ -29,7 +31,6 @@ func show_scoreboard():
 	var sw_result: Dictionary = await SilentWolf.Scores.get_scores().sw_get_scores_complete
 	scoreboards = sw_result.scores
 	print("Scores: " + str(sw_result.scores))
-	
 	
 	for i in scoreboards:
 		var lab = Label.new()
