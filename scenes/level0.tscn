@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxo6d3njabbtg" path="res://assets/kenney-input/xbox_button_a.png" id="4_gmatk"]
 [ext_resource type="PackedScene" uid="uid://cp36kiaghry3t" path="res://scenes/player.tscn" id="8_os17w"]
 [ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="9_xb0m2"]
-[ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="10_b8lpw"]
+[ext_resource type="PackedScene" path="res://scenes/safety_net.tscn" id="10_b8lpw"]
 [ext_resource type="TileSet" uid="uid://2ug3u3nxywaj" path="res://assets/tileset/tileset.tres" id="11_hxs5t"]
 [ext_resource type="Texture2D" uid="uid://cu0rqdmx2keep" path="res://assets/kenney-input/aim_combined.png" id="12_3vcbg"]
 [ext_resource type="FontFile" uid="uid://objrniu567jt" path="res://assets/fonts/Fredoka-Medium.ttf" id="13_ntubx"]
