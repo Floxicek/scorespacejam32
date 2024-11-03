@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq0h41k4ge481"]
+
+[ext_resource type="FontFile" uid="uid://bxibr3cgsdhaa" path="res://assets/fonts/Fredoka-Light.ttf" id="1_p12rm"]
+
+[node name="ScoreboardLabel" type="Label"]
+theme_override_fonts/font = ExtResource("1_p12rm")

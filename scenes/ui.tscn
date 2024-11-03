@@ -159,6 +159,15 @@ text = "SCOREBOARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LOADING" type="Label" parent="Scoreboard/Scoreboard/MarginContainer/VBoxContainer/ScrollContainer/ScoreboardVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hjsla")
+theme_override_font_sizes/font_size = 31
+text = "LOADING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Continue" type="Button" parent="Scoreboard/Scoreboard/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Continue"
