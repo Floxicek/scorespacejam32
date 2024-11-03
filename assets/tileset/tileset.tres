@@ -1,9 +1,12 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://2ug3u3nxywaj"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://2ug3u3nxywaj"]
 
 [ext_resource type="Texture2D" uid="uid://kd6syeub8fkb" path="res://assets/tileset/tileset_concrete.png" id="1_cwdbd"]
 [ext_resource type="PhysicsMaterial" uid="uid://cdceh87gryt3w" path="res://assets/platform_physics_material.tres" id="1_pvc1e"]
 [ext_resource type="PhysicsMaterial" uid="uid://bmamq3cdomt8" path="res://assets/sand_platform_physics_material.tres" id="2_7y10l"]
 [ext_resource type="Texture2D" uid="uid://wpids8cwc216" path="res://assets/tileset/tileset_sand.png" id="2_infaq"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_t7ye5"]
+tile_data = PackedInt32Array(0, 65537, 0, 65536, 131073, 1, 131072, 65537, 2, 1, 131073, 0, 65537, 131073, 1, 131073, 131073, 2, 2, 131073, 0, 65538, 131073, 1, 131074, 131073, 2, 3, 131073, 0, 65539, 131073, 1, 131075, 131073, 2, 4, 196609, 0, 65540, 131073, 1, 131076, 196609, 2)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nrto5"]
 texture = ExtResource("1_cwdbd")
@@ -61,9 +64,9 @@ texture_region_size = Vector2i(100, 100)
 3:2/0 = 0
 3:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 35.7143, 35.7143, 50, -50, 50)
 4:2/0 = 0
-4:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-50, -21.4286, -35.7143, -35.7143, 50, -35.7143, 50, 50, 50, 50, 50, 50, -35.7143, 50, -50, 35.7143)
+4:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(50, -35.7143, -35.7143, -35.7143, -50, -21.4286, -50, 35.7143, -35.7143, 50, 50, 50)
 5:2/0 = 0
-5:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(50, -21.4286, 35.7143, -35.7143, -50, -35.7143, -50, 50, -50, 50, -50, 50, 35.7143, 50, 50, 35.7143)
+5:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-50, -35.7143, 35.7143, -35.7143, 50, -21.4286, 50, 35.7143, 35.7143, 50, -50, 50)
 
 [resource]
 tile_size = Vector2i(100, 100)
@@ -73,3 +76,4 @@ physics_layer_1/collision_layer = 1
 physics_layer_1/physics_material = ExtResource("2_7y10l")
 sources/0 = SubResource("TileSetAtlasSource_nrto5")
 sources/1 = SubResource("TileSetAtlasSource_e5tq2")
+pattern_0 = SubResource("TileMapPattern_t7ye5")

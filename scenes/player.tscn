@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp36kiaghry3t"]
+[gd_scene load_steps=8 format=3 uid="uid://cp36kiaghry3t"]
 
+[ext_resource type="Script" path="res://scenes/player_export.gd" id="1_3r3ia"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="1_ev6oj"]
 [ext_resource type="PhysicsMaterial" uid="uid://35e8n4mnpfdk" path="res://assets/player_physics_material.tres" id="2_x306v"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_ur02k"]
@@ -11,6 +12,7 @@ radius = 8.0
 
 [node name="Player" type="Node2D"]
 position = Vector2(600, -649)
+script = ExtResource("1_3r3ia")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 process_callback = 0

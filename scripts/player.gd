@@ -1,21 +1,12 @@
 extends RigidBody2D
 
 
-enum Layers 
-{
-	PLATFORM = 2,
-	SAND = 4
-}
-
 @export var max_power: float = 1500
 @export var power_speed: float = 1000
 @export var angle_speed: float = 1.5
 
 # map of angular dampening values for each layer
-@export var layer_damp: Dictionary = {
-	Layers.PLATFORM: 4,
-	Layers.SAND: 18
-}
+@export var layer_damp := [4, 18]
 
 @export var movement_threshold := 3.0
 
@@ -26,10 +17,13 @@ var reset_state = false
 var moveVector: Vector2
 var spawn_pos
 
+var tile_map
+
 func _ready() -> void:
 	self.contact_monitor = true
 	self.max_contacts_reported = 10
 	spawn_pos = global_position
+	tile_map = get_parent().tilemap
 
 
 func _integrate_forces(state):
@@ -48,6 +42,13 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("aim_right"):
 		angle += angle_speed * _delta
 	angle = clamp(angle, -1.5, 1.5)
+	
+	var tile_pos = tile_map.local_to_map(global_position + Vector2.DOWN)
+	var tile_id = tile_map.get_cell_source_id(tile_pos)
+	
+	if tile_id >= 0:
+		self.angular_damp = layer_damp[tile_id]
+		
 
 	var is_moving = linear_velocity.length() >= movement_threshold
 	if is_moving:
@@ -76,12 +77,16 @@ func _physics_process(_delta):
 	$ProgressBar.rotation = - self.rotation
 
 
-func _on_body_entered(body: Node) -> void:
-	if not body.is_in_group("Platform"):
-		return
 
-	var body_layers = body.get_collision_layer()
-	for layer in layer_damp.keys():
-		if body_layers & layer:
-			self.angular_damp = layer_damp[layer]
-			break
+
+#func _on_body_entered(body: Node) -> void:
+	#if not body.is_in_group("Platform"):
+		#return
+#
+	#var body_layers = body.get_collision_layer()
+	#print(body_layers)
+	#for layer in layer_damp.keys():
+		#if body_layers & layer:
+			#self.angular_damp = layer_damp[layer]
+			#print(layer_damp[layer])
+			#break

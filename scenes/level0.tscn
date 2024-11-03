@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://cvj1qmb806ago"]
+[gd_scene load_steps=9 format=4 uid="uid://cvj1qmb806ago"]
 
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="2_012ry"]
-[ext_resource type="PhysicsMaterial" uid="uid://cdceh87gryt3w" path="res://assets/platform_physics_material.tres" id="3_dh7kv"]
 [ext_resource type="PackedScene" uid="uid://cp36kiaghry3t" path="res://scenes/player.tscn" id="8_os17w"]
 [ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="9_xb0m2"]
 [ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="10_b8lpw"]
@@ -10,31 +9,9 @@
 [ext_resource type="FontFile" uid="uid://objrniu567jt" path="res://assets/fonts/Fredoka-Medium.ttf" id="13_ntubx"]
 [ext_resource type="Texture2D" uid="uid://comsqe3ati10v" path="res://assets/kenney-input/keyboard_space.png" id="16_w76aa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rt6v"]
-size = Vector2(9997, 111)
-
 [node name="Map2" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
-
-[node name="Ground" type="StaticBody2D" parent="Environment" groups=["Platform"]]
-collision_layer = 3
-physics_material_override = ExtResource("3_dh7kv")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Ground"]
-position = Vector2(0.5, 45.5)
-shape = SubResource("RectangleShape2D_1rt6v")
-
-[node name="GroundBack" type="Polygon2D" parent="Environment/Ground"]
-self_modulate = Color(0.278431, 0.278431, 0.278431, 1)
-position = Vector2(0, 79)
-polygon = PackedVector2Array(-5000, -100, 5000, -100, 5000, 0, -5000, 0)
-
-[node name="Ground" type="Polygon2D" parent="Environment/Ground"]
-self_modulate = Color(0.215686, 0.219608, 0.215686, 1)
-position = Vector2(0, 102)
-polygon = PackedVector2Array(-5000, -100, 5000, -100, 5000, 0, -5000, 0)
 
 [node name="Keybinds" type="Node2D" parent="Environment"]
 modulate = Color(0.215686, 0.219608, 0.215686, 1)
@@ -72,13 +49,14 @@ vertical_alignment = 1
 [node name="Flag" parent="Environment" instance=ExtResource("2_012ry")]
 position = Vector2(-688, -1641)
 
-[node name="Player" parent="." instance=ExtResource("8_os17w")]
+[node name="Player" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("8_os17w")]
 position = Vector2(-1, -204)
+tilemap = NodePath("../TileMapLayer")
 
 [node name="UI" parent="." instance=ExtResource("9_xb0m2")]
 
 [node name="SafetyNet" parent="." instance=ExtResource("10_b8lpw")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAACAP3/AAABAAAAAAADAP3/AAACAAAAAAAEAP3/AAACAAAAAAAFAP3/AAACAAAAAAAGAP3/AAACAAAAAAAHAP3/AAADAAAAAAAHAP7/AAADAAIAAAAGAP7/AAACAAIAAAAFAP7/AAACAAIAAAAEAP7/AAACAAIAAAADAP7/AAACAAIAAAACAP7/AAABAAIAAAAKAPv/AAAAAAEAAAAKAPz/AAAAAAIAAAD+//v/AQACAAAAAAD9//v/AQACAAAAAAD8//v/AQACAAAAAAD7//v/AQABAAAAAAD///v/AQADAAAAAAD7//z/AQACAAEAAAD8//z/AQACAAEAAAD9//z/AQACAAEAAAD+//z/AQACAAEAAAD///z/AQACAAEAAAD///3/AQADAAIAAAD7//3/AQABAAIAAAD8//3/AQACAAIAAAD9//3/AQACAAIAAAD+//3/AQACAAIAAAA=")
+tile_map_data = PackedByteArray("AAACAP3/AAABAAAAAAADAP3/AAACAAAAAAAEAP3/AAACAAAAAAAFAP3/AAACAAAAAAAGAP3/AAACAAAAAAAHAP3/AAADAAAAAAAHAP7/AAADAAIAAAAGAP7/AAACAAIAAAAFAP7/AAACAAIAAAAEAP7/AAACAAIAAAADAP7/AAACAAIAAAACAP7/AAABAAIAAAAKAPv/AAAAAAEAAAAKAPz/AAAAAAIAAAD7//n/AQAEAAIAAAD8//n/AQAFAAIAAAD7//7/AQAAAAEAAAD7////AQAAAAIAAAD+////AAAEAAIAAAD/////AAACAAAAAAAAAP//AAACAAAAAAABAP//AAAFAAIAAAA=")
 tile_set = ExtResource("11_hxs5t")
