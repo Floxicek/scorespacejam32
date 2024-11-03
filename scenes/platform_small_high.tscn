@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://bpm8mkbr2jcqf" path="res://scenes/platform_small.tscn" id="1_qa3ql"]
 [ext_resource type="Texture2D" uid="uid://csg22xyvarvf2" path="res://assets/platform_small_high.png" id="2_3i8t1"]
 
-[node name="PlatformSmallHigh" groups=["Platform"] instance=ExtResource("1_qa3ql")]
+[node name="PlatformSmallHigh" instance=ExtResource("1_qa3ql")]
 
 [node name="CollisionPolygon2D" parent="." index="0"]
-position = Vector2(0, -19)
-polygon = PackedVector2Array(48, -79, -48, -79, -66, -67, -76, -52, -76, 67, -46, 98, 45, 98, 77, 68, 77, -48, 67, -66)
+position = Vector2(0, -13)
+polygon = PackedVector2Array(46, -75, -46, -75, -62, -68, -74, -50, -74, 65, -42, 92, 43, 92, 74, 64, 75, -49, 64, -67)
 
 [node name="Platform3" parent="." index="1"]
 texture = ExtResource("2_3i8t1")

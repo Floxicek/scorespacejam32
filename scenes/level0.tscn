@@ -1,15 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvj1qmb806ago"]
+[gd_scene load_steps=12 format=4 uid="uid://cvj1qmb806ago"]
 
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="2_012ry"]
 [ext_resource type="PackedScene" uid="uid://dmub85j6lafvu" path="res://scenes/platform_mid.tscn" id="2_jbg5r"]
-[ext_resource type="PhysicsMaterial" uid="uid://dp7yo0dajty72" path="res://assets/platform_physics_material.tres" id="3_dh7kv"]
+[ext_resource type="PhysicsMaterial" uid="uid://cdceh87gryt3w" path="res://assets/platform_physics_material.tres" id="3_dh7kv"]
 [ext_resource type="PackedScene" uid="uid://be7wo2vsdx6t2" path="res://scenes/sand_platform_long.tscn" id="4_uem45"]
-[ext_resource type="PackedScene" uid="uid://c3bptrg06rcus" path="res://scenes/platform_small_high.tscn" id="5_mlbpd"]
 [ext_resource type="PackedScene" uid="uid://wbqynctxehg1" path="res://scenes/sand_platform_mid.tscn" id="6_0gqsl"]
 [ext_resource type="PackedScene" uid="uid://u3b12rjivl4h" path="res://scenes/platform_long.tscn" id="7_svmhg"]
 [ext_resource type="PackedScene" uid="uid://cp36kiaghry3t" path="res://scenes/player.tscn" id="8_os17w"]
 [ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="9_xb0m2"]
 [ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="10_b8lpw"]
+[ext_resource type="TileSet" uid="uid://cwygei73xu0if" path="res://assets/tileset.tres" id="11_hxs5t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1rt6v"]
 size = Vector2(9997, 111)
@@ -46,174 +46,6 @@ position = Vector2(64, -64)
 [node name="SandPlatformLong" parent="Environment" instance=ExtResource("4_uem45")]
 position = Vector2(448, -288)
 
-[node name="PlatformSmallHigh" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -64)
-collision_layer = 1
-
-[node name="PlatformSmallHigh3" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -192)
-collision_layer = 1
-
-[node name="PlatformSmallHigh4" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -320)
-collision_layer = 1
-
-[node name="PlatformSmallHigh5" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -448)
-collision_layer = 1
-
-[node name="PlatformSmallHigh6" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -576)
-collision_layer = 1
-
-[node name="PlatformSmallHigh7" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -704)
-collision_layer = 1
-
-[node name="PlatformSmallHigh2" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -832)
-collision_layer = 1
-
-[node name="PlatformSmallHigh8" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -960)
-collision_layer = 1
-
-[node name="PlatformSmallHigh9" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -1088)
-collision_layer = 1
-
-[node name="PlatformSmallHigh10" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -1216)
-collision_layer = 1
-
-[node name="PlatformSmallHigh11" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -1344)
-collision_layer = 1
-
-[node name="PlatformSmallHigh12" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -1472)
-collision_layer = 1
-
-[node name="PlatformSmallHigh13" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -1600)
-collision_layer = 1
-
-[node name="PlatformSmallHigh14" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -1728)
-collision_layer = 1
-
-[node name="PlatformSmallHigh15" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -1856)
-collision_layer = 1
-
-[node name="PlatformSmallHigh16" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -1984)
-collision_layer = 1
-
-[node name="PlatformSmallHigh17" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -2112)
-collision_layer = 1
-
-[node name="PlatformSmallHigh18" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -2240)
-collision_layer = 1
-
-[node name="PlatformSmallHigh19" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -64)
-collision_layer = 1
-
-[node name="PlatformSmallHigh20" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -192)
-collision_layer = 1
-
-[node name="PlatformSmallHigh21" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -320)
-collision_layer = 1
-
-[node name="PlatformSmallHigh22" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -448)
-collision_layer = 1
-
-[node name="PlatformSmallHigh23" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -576)
-collision_layer = 1
-
-[node name="PlatformSmallHigh24" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -704)
-collision_layer = 1
-
-[node name="PlatformSmallHigh25" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -832)
-collision_layer = 1
-
-[node name="PlatformSmallHigh26" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -960)
-collision_layer = 1
-
-[node name="PlatformSmallHigh27" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -1088)
-collision_layer = 1
-
-[node name="PlatformSmallHigh28" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -1216)
-collision_layer = 1
-
-[node name="PlatformSmallHigh29" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -1344)
-collision_layer = 1
-
-[node name="PlatformSmallHigh30" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -1472)
-collision_layer = 1
-
-[node name="PlatformSmallHigh31" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -1600)
-collision_layer = 1
-
-[node name="PlatformSmallHigh32" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -1728)
-collision_layer = 1
-
-[node name="PlatformSmallHigh33" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -1856)
-collision_layer = 1
-
-[node name="PlatformSmallHigh34" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -1984)
-collision_layer = 1
-
-[node name="PlatformSmallHigh35" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -2112)
-collision_layer = 1
-
-[node name="PlatformSmallHigh36" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -2240)
-collision_layer = 1
-
-[node name="PlatformSmallHigh37" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -2368)
-collision_layer = 1
-
-[node name="PlatformSmallHigh38" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -2496)
-collision_layer = 1
-
-[node name="PlatformSmallHigh39" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(-960, -2624)
-collision_layer = 1
-
-[node name="PlatformSmallHigh40" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -2368)
-collision_layer = 1
-
-[node name="PlatformSmallHigh41" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -2496)
-collision_layer = 1
-
-[node name="PlatformSmallHigh42" parent="Environment" instance=ExtResource("5_mlbpd")]
-position = Vector2(960, -2624)
-collision_layer = 1
-
 [node name="SandPlatformMid" parent="Environment" instance=ExtResource("6_0gqsl")]
 position = Vector2(-256, -672)
 
@@ -226,3 +58,7 @@ position = Vector2(-1, -204)
 [node name="UI" parent="." instance=ExtResource("9_xb0m2")]
 
 [node name="SafetyNet" parent="." instance=ExtResource("10_b8lpw")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAANANz/AQAAAAAAAAANAN3/AQAAAAEAAAANAN7/AQAAAAEAAAANAN//AQAAAAEAAAANAOD/AQAAAAEAAAANAOH/AQAAAAEAAAANAOL/AQAAAAEAAAANAOP/AQAAAAEAAAANAOT/AQAAAAEAAAANAOX/AQAAAAEAAAANAOb/AQAAAAEAAAANAOf/AQAAAAEAAAANAOj/AQAAAAEAAAANAOn/AQAAAAEAAAANAOr/AQAAAAEAAAANAOv/AQAAAAEAAAANAOz/AQAAAAEAAAANAO3/AQAAAAEAAAANAO7/AQAAAAEAAAANAO//AQAAAAEAAAANAPD/AQAAAAEAAAANAPH/AQAAAAEAAAANAPL/AQAAAAEAAAANAPP/AQAAAAEAAAANAPT/AQAAAAEAAAANAPX/AQAAAAEAAAANAPb/AQAAAAEAAAANAPf/AQAAAAEAAAANAPj/AQAAAAEAAAANAPn/AQAAAAEAAAANAPr/AQAAAAEAAAANAPv/AQAAAAEAAAANAPz/AQAAAAEAAAANAP3/AQAAAAEAAAANAP7/AQAAAAEAAAANAP//AQABAAEAAAANAAAAAQABAAEAAAAOANz/AQABAAAAAAAOAN3/AQAAAAEAAAAOAN7/AQAAAAEAAAAOAN//AQAAAAEAAAAOAOD/AQAAAAEAAAAOAOH/AQAAAAEAAAAOAOL/AQAAAAEAAAAOAOP/AQAAAAEAAAAOAOT/AQAAAAEAAAAOAOX/AQAAAAEAAAAOAOb/AQAAAAEAAAAOAOf/AQAAAAEAAAAOAOj/AQAAAAEAAAAOAOn/AQAAAAEAAAAOAOr/AQAAAAEAAAAOAOv/AQAAAAEAAAAOAOz/AQAAAAEAAAAOAO3/AQAAAAEAAAAOAO7/AQAAAAEAAAAOAO//AQAAAAEAAAAOAPD/AQAAAAEAAAAOAPH/AQAAAAEAAAAOAPL/AQAAAAEAAAAOAPP/AQAAAAEAAAAOAPT/AQAAAAEAAAAOAPX/AQAAAAEAAAAOAPb/AQAAAAEAAAAOAPf/AQAAAAEAAAAOAPj/AQAAAAEAAAAOAPn/AQAAAAEAAAAOAPr/AQAAAAEAAAAOAPv/AQAAAAEAAAAOAPz/AQAAAAEAAAAOAP3/AQAAAAEAAAAOAP7/AQAAAAEAAAAOAP//AQAAAAEAAAAOAAAAAQABAAEAAADx/9z/AQAAAAAAAADx/93/AQAAAAEAAADx/97/AQAAAAEAAADx/9//AQAAAAEAAADx/+D/AQAAAAEAAADx/+H/AQAAAAEAAADx/+L/AQAAAAEAAADx/+P/AQAAAAEAAADx/+T/AQAAAAEAAADx/+X/AQAAAAEAAADx/+b/AQAAAAEAAADx/+f/AQAAAAEAAADx/+j/AQAAAAEAAADx/+n/AQAAAAEAAADx/+r/AQAAAAEAAADx/+v/AQAAAAEAAADx/+z/AQAAAAEAAADx/+3/AQAAAAEAAADx/+7/AQAAAAEAAADx/+//AQAAAAEAAADx//D/AQAAAAEAAADx//H/AQAAAAEAAADx//L/AQAAAAEAAADx//P/AQAAAAEAAADx//T/AQAAAAEAAADx//X/AQAAAAEAAADx//b/AQAAAAEAAADx//f/AQAAAAEAAADx//j/AQAAAAEAAADx//n/AQAAAAEAAADx//r/AQAAAAEAAADx//v/AQAAAAEAAADx//z/AQAAAAEAAADx//3/AQAAAAEAAADx//7/AQAAAAEAAADx////AQABAAEAAADx/wAAAQABAAEAAADy/9z/AQABAAAAAADy/93/AQAAAAEAAADy/97/AQAAAAEAAADy/9//AQAAAAEAAADy/+D/AQAAAAEAAADy/+H/AQAAAAEAAADy/+L/AQAAAAEAAADy/+P/AQAAAAEAAADy/+T/AQAAAAEAAADy/+X/AQAAAAEAAADy/+b/AQAAAAEAAADy/+f/AQAAAAEAAADy/+j/AQAAAAEAAADy/+n/AQAAAAEAAADy/+r/AQAAAAEAAADy/+v/AQAAAAEAAADy/+z/AQAAAAEAAADy/+3/AQAAAAEAAADy/+7/AQAAAAEAAADy/+//AQAAAAEAAADy//D/AQAAAAEAAADy//H/AQAAAAEAAADy//L/AQAAAAEAAADy//P/AQAAAAEAAADy//T/AQAAAAEAAADy//X/AQAAAAEAAADy//b/AQAAAAEAAADy//f/AQAAAAEAAADy//j/AQAAAAEAAADy//n/AQAAAAEAAADy//r/AQAAAAEAAADy//v/AQAAAAEAAADy//z/AQAAAAEAAADy//3/AQAAAAEAAADy//7/AQAAAAEAAADy////AQAAAAEAAADy/wAAAQABAAEAAAA=")
+tile_set = ExtResource("11_hxs5t")
