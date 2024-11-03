@@ -11,7 +11,7 @@ signal update_strokes
 
 func add_stroke():
 	strokes += 1
-	emit_signal("update_strokes", strokes)
+	update_strokes.emit(strokes)
 
 func get_score_for_leaderboard():
 	if last_score >= MAX_SCORE:
