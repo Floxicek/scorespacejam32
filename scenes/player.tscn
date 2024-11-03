@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp36kiaghry3t"]
+[gd_scene load_steps=10 format=3 uid="uid://cp36kiaghry3t"]
 
 [ext_resource type="Script" path="res://scenes/player_export.gd" id="1_3r3ia"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="1_ev6oj"]
@@ -6,19 +6,23 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_ur02k"]
 [ext_resource type="Texture2D" uid="uid://858caggshc0b" path="res://assets/ball.png" id="4_44ji3"]
 [ext_resource type="Texture2D" uid="uid://pg2mp301tuiv" path="res://assets/arrow.png" id="5_cgmkp"]
+[ext_resource type="Script" path="res://scripts/player_trail.gd" id="7_yk7hg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hfhv"]
 radius = 9.0
 
+[sub_resource type="Curve" id="Curve_pg8h6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.330717, 0.685567), 1.43686, 1.43686, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Player" type="Node2D"]
-position = Vector2(600, -649)
 script = ExtResource("1_3r3ia")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 process_callback = 0
 script = ExtResource("1_ev6oj")
 player = NodePath("../PlayerRigid")
-ignore_height = -200
+ignore_height = -100
 height_offset = 200
 
 [node name="PlayerRigid" type="RigidBody2D" parent="." groups=["Player"]]
@@ -66,5 +70,17 @@ texture_progress_offset = Vector2(-16, -16)
 position = Vector2(0, -55)
 scale = Vector2(0.0772201, 0.0772201)
 texture = ExtResource("5_cgmkp")
+
+[node name="Trail" type="Line2D" parent="." node_paths=PackedStringArray("player")]
+top_level = true
+width = 5.0
+width_curve = SubResource("Curve_pg8h6")
+default_color = Color(0.154386, 0.230605, 0.308165, 1)
+joint_mode = 2
+end_cap_mode = 2
+sharp_limit = 10.0
+antialiased = true
+script = ExtResource("7_yk7hg")
+player = NodePath("../PlayerRigid")
 
 [connection signal="body_entered" from="PlayerRigid" to="PlayerRigid" method="_on_body_entered"]
