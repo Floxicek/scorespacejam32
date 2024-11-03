@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cvj1qmb806ago"]
+[gd_scene load_steps=14 format=3 uid="uid://cvj1qmb806ago"]
 
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="2_012ry"]
 [ext_resource type="PhysicsMaterial" uid="uid://cdceh87gryt3w" path="res://assets/platform_physics_material.tres" id="3_dh7kv"]
@@ -95,5 +95,4 @@ position = Vector2(-1, -204)
 [node name="SafetyNet" parent="." instance=ExtResource("10_b8lpw")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD8//D/CQAAAAAAAAD9//D/CQABAAAAAAD6//D/CQABAAAAAAD///D/CwAAAAAAAAD///H/CwAAAAEAAAD2//D/DAAAAAAAAAD3//D/DAABAAAAAAD2//H/DAAAAAEAAAD3//H/DAABAAEAAAA=")
 tile_set = ExtResource("11_hxs5t")

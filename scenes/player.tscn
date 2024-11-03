@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cp36kiaghry3t"]
+[gd_scene load_steps=7 format=3 uid="uid://cp36kiaghry3t"]
 
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="1_ev6oj"]
-[ext_resource type="PhysicsMaterial" uid="uid://d2mq347lug1e7" path="res://assets/player_physics_material.tres" id="2_x306v"]
+[ext_resource type="PhysicsMaterial" uid="uid://35e8n4mnpfdk" path="res://assets/player_physics_material.tres" id="2_x306v"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_ur02k"]
 [ext_resource type="Texture2D" uid="uid://858caggshc0b" path="res://assets/ball.png" id="4_44ji3"]
 [ext_resource type="Texture2D" uid="uid://pg2mp301tuiv" path="res://assets/arrow.png" id="5_cgmkp"]
@@ -9,20 +9,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hfhv"]
 radius = 8.0
 
-[sub_resource type="Curve" id="Curve_umwhh"]
-_data = [Vector2(0.0114613, 1), 0.0, 0.0, 0, 0, Vector2(0.856733, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_akhae"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
 [node name="Player" type="Node2D"]
 position = Vector2(600, -649)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 process_callback = 0
 script = ExtResource("1_ev6oj")
-player = NodePath("../PlayerRigid/PlayerSprite")
+player = NodePath("../PlayerRigid")
 ignore_height = -200
 height_offset = 200
 
@@ -63,21 +56,11 @@ fill_mode = 4
 texture_progress = ExtResource("4_44ji3")
 texture_progress_offset = Vector2(-16, -16)
 
-[node name="Arrowa" type="Line2D" parent="PlayerRigid"]
-visible = false
-scale = Vector2(4, 28)
-points = PackedVector2Array(0, -1, 0, -3, 0, -4)
-width = 2.509
-width_curve = SubResource("Curve_umwhh")
-gradient = SubResource("Gradient_akhae")
-joint_mode = 1
-antialiased = true
-
-[node name="Arrow" type="Node2D" parent="PlayerRigid"]
+[node name="Arrow" type="Marker2D" parent="PlayerRigid"]
 
 [node name="Arrow" type="Sprite2D" parent="PlayerRigid/Arrow"]
-position = Vector2(1, -81)
-scale = Vector2(0.179537, 0.179537)
+position = Vector2(0, -29)
+scale = Vector2(0.0487452, 0.0487452)
 texture = ExtResource("5_cgmkp")
 
 [connection signal="body_entered" from="PlayerRigid" to="PlayerRigid" method="_on_body_entered"]
