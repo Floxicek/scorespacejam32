@@ -28,6 +28,7 @@ gravity_scale = 1.5
 max_contacts_reported = 2
 angular_damp = 5.0
 script = ExtResource("3_ur02k")
+movement_threshold = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRigid"]
 shape = SubResource("CircleShape2D_4hfhv")
