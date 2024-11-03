@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://cvj1qmb806ago"]
+[gd_scene load_steps=14 format=4 uid="uid://cvj1qmb806ago"]
 
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="2_012ry"]
-[ext_resource type="PackedScene" uid="uid://dmub85j6lafvu" path="res://scenes/platform_mid.tscn" id="2_jbg5r"]
 [ext_resource type="PhysicsMaterial" uid="uid://cdceh87gryt3w" path="res://assets/platform_physics_material.tres" id="3_dh7kv"]
 [ext_resource type="PackedScene" uid="uid://be7wo2vsdx6t2" path="res://scenes/sand_platform_long.tscn" id="4_uem45"]
 [ext_resource type="PackedScene" uid="uid://wbqynctxehg1" path="res://scenes/sand_platform_mid.tscn" id="6_0gqsl"]
@@ -10,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="9_xb0m2"]
 [ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="10_b8lpw"]
 [ext_resource type="TileSet" uid="uid://cwygei73xu0if" path="res://assets/tileset.tres" id="11_hxs5t"]
+[ext_resource type="Texture2D" uid="uid://cu0rqdmx2keep" path="res://assets/kenney-input/aim_combined.png" id="12_3vcbg"]
+[ext_resource type="FontFile" uid="uid://objrniu567jt" path="res://assets/fonts/Fredoka-Medium.ttf" id="13_ntubx"]
+[ext_resource type="Texture2D" uid="uid://comsqe3ati10v" path="res://assets/kenney-input/keyboard_space.png" id="16_w76aa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1rt6v"]
 size = Vector2(9997, 111)
@@ -37,11 +39,11 @@ self_modulate = Color(0.215686, 0.219608, 0.215686, 1)
 position = Vector2(0, 102)
 polygon = PackedVector2Array(-5000, -100, 5000, -100, 5000, 0, -5000, 0)
 
-[node name="PlatformMid" parent="Environment" instance=ExtResource("2_jbg5r")]
-position = Vector2(-736, -1568)
+[node name="SandPlatformMid2" parent="Environment" instance=ExtResource("6_0gqsl")]
+position = Vector2(-741, -1586)
 
-[node name="Flag" parent="Environment/PlatformMid" instance=ExtResource("2_012ry")]
-position = Vector2(64, -64)
+[node name="Flag" parent="Environment/SandPlatformMid2" instance=ExtResource("2_012ry")]
+position = Vector2(53, -55)
 
 [node name="SandPlatformLong" parent="Environment" instance=ExtResource("4_uem45")]
 position = Vector2(448, -288)
@@ -52,6 +54,39 @@ position = Vector2(-256, -672)
 [node name="PlatformLong" parent="Environment" instance=ExtResource("7_svmhg")]
 position = Vector2(224, -1248)
 
+[node name="Keybinds" type="Node2D" parent="Environment"]
+modulate = Color(0.215686, 0.219608, 0.215686, 1)
+
+[node name="KeyboardSpace" type="Sprite2D" parent="Environment/Keybinds"]
+position = Vector2(65, -373)
+texture = ExtResource("16_w76aa")
+
+[node name="AimCombined" type="Sprite2D" parent="Environment/Keybinds"]
+position = Vector2(-257, -376)
+texture = ExtResource("12_3vcbg")
+
+[node name="Label" type="Label" parent="Environment/Keybinds"]
+offset_left = -359.0
+offset_top = -539.0
+offset_right = -158.0
+offset_bottom = -483.0
+theme_override_fonts/font = ExtResource("13_ntubx")
+theme_override_font_sizes/font_size = 41
+text = "Aim using"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Environment/Keybinds"]
+offset_left = -43.0
+offset_top = -539.0
+offset_right = 197.0
+offset_bottom = -483.0
+theme_override_fonts/font = ExtResource("13_ntubx")
+theme_override_font_sizes/font_size = 41
+text = "Charge using"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Player" parent="." instance=ExtResource("8_os17w")]
 position = Vector2(-1, -204)
 
@@ -60,5 +95,5 @@ position = Vector2(-1, -204)
 [node name="SafetyNet" parent="." instance=ExtResource("10_b8lpw")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAANAN3/AQAAAAEAAAANAN7/AQAAAAEAAAANAN//AQAAAAEAAAANAOD/AQAAAAEAAAANAOH/AQAAAAEAAAANAOL/AQAAAAEAAAANAOP/AQAAAAEAAAANAOT/AQAAAAEAAAANAOX/AQAAAAEAAAANAOb/AQAAAAEAAAANAOf/AQAAAAEAAAANAOj/AQAAAAEAAAANAOn/AQAAAAEAAAANAOr/AQAAAAEAAAANAOv/AQAAAAEAAAANAOz/AQAAAAEAAAANAO3/AQAAAAEAAAANAO7/AQAAAAEAAAANAO//AQAAAAEAAAANAPD/AQAAAAEAAAANAPH/AQAAAAEAAAANAPL/AQAAAAEAAAANAPP/AQAAAAEAAAANAPT/AQAAAAEAAAANAPX/AQAAAAEAAAANAPb/AQAAAAEAAAANAPf/AQAAAAEAAAANAPj/AQAAAAEAAAANAPn/AQAAAAEAAAANAPr/AQAAAAEAAAANAPv/AQAAAAEAAAANAPz/AQAAAAEAAAANAP3/AQAAAAEAAAANAP7/AQAAAAEAAAANAP//AQABAAEAAAANAAAAAQABAAEAAAAOANz/AQABAAAAAAAOAN3/AQAAAAEAAAAOAN7/AQAAAAEAAAAOAN//AQAAAAEAAAAOAOD/AQAAAAEAAAAOAOH/AQAAAAEAAAAOAOL/AQAAAAEAAAAOAOP/AQAAAAEAAAAOAOT/AQAAAAEAAAAOAOX/AQAAAAEAAAAOAOb/AQAAAAEAAAAOAOf/AQAAAAEAAAAOAOj/AQAAAAEAAAAOAOn/AQAAAAEAAAAOAOr/AQAAAAEAAAAOAOv/AQAAAAEAAAAOAOz/AQAAAAEAAAAOAO3/AQAAAAEAAAAOAO7/AQAAAAEAAAAOAO//AQAAAAEAAAAOAPD/AQAAAAEAAAAOAPH/AQAAAAEAAAAOAPL/AQAAAAEAAAAOAPP/AQAAAAEAAAAOAPT/AQAAAAEAAAAOAPX/AQAAAAEAAAAOAPb/AQAAAAEAAAAOAPf/AQAAAAEAAAAOAPj/AQAAAAEAAAAOAPn/AQAAAAEAAAAOAPr/AQAAAAEAAAAOAPv/AQAAAAEAAAAOAPz/AQAAAAEAAAAOAP3/AQAAAAEAAAAOAP7/AQAAAAEAAAAOAP//AQAAAAEAAAAOAAAAAQABAAEAAADx/9z/AQAAAAAAAADx/93/AQAAAAEAAADx/97/AQAAAAEAAADx/9//AQAAAAEAAADx/+D/AQAAAAEAAADx/+H/AQAAAAEAAADx/+L/AQAAAAEAAADx/+P/AQAAAAEAAADx/+T/AQAAAAEAAADx/+X/AQAAAAEAAADx/+b/AQAAAAEAAADx/+f/AQAAAAEAAADx/+j/AQAAAAEAAADx/+n/AQAAAAEAAADx/+r/AQAAAAEAAADx/+v/AQAAAAEAAADx/+z/AQAAAAEAAADx/+3/AQAAAAEAAADx/+7/AQAAAAEAAADx/+//AQAAAAEAAADx//D/AQAAAAEAAADx//H/AQAAAAEAAADx//L/AQAAAAEAAADx//P/AQAAAAEAAADx//T/AQAAAAEAAADx//X/AQAAAAEAAADx//b/AQAAAAEAAADx//f/AQAAAAEAAADx//j/AQAAAAEAAADx//n/AQAAAAEAAADx//r/AQAAAAEAAADx//v/AQAAAAEAAADx//z/AQAAAAEAAADx//3/AQAAAAEAAADx//7/AQAAAAEAAADx////AQABAAEAAADx/wAAAQABAAEAAADy/9z/AQABAAAAAADy/93/AQAAAAEAAADy/97/AQAAAAEAAADy/9//AQAAAAEAAADy/+D/AQAAAAEAAADy/+H/AQAAAAEAAADy/+L/AQAAAAEAAADy/+P/AQAAAAEAAADy/+T/AQAAAAEAAADy/+X/AQAAAAEAAADy/+b/AQAAAAEAAADy/+f/AQAAAAEAAADy/+j/AQAAAAEAAADy/+n/AQAAAAEAAADy/+r/AQAAAAEAAADy/+v/AQAAAAEAAADy/+z/AQAAAAEAAADy/+3/AQAAAAEAAADy/+7/AQAAAAEAAADy/+//AQAAAAEAAADy//D/AQAAAAEAAADy//H/AQAAAAEAAADy//L/AQAAAAEAAADy//P/AQAAAAEAAADy//T/AQAAAAEAAADy//X/AQAAAAEAAADy//b/AQAAAAEAAADy//f/AQAAAAEAAADy//j/AQAAAAEAAADy//n/AQAAAAEAAADy//r/AQAAAAEAAADy//v/AQAAAAEAAADy//z/AQAAAAEAAADy//3/AQAAAAEAAADy//7/AQAAAAEAAADy////AQAAAAEAAADy/wAAAQABAAEAAAANANz/AQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8//D/CQAAAAAAAAD9//D/CQABAAAAAAD6//D/CQABAAAAAAD///D/CwAAAAAAAAD///H/CwAAAAEAAAD2//D/DAAAAAAAAAD3//D/DAABAAAAAAD2//H/DAAAAAEAAAD3//H/DAABAAEAAAA=")
 tile_set = ExtResource("11_hxs5t")

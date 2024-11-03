@@ -5,13 +5,15 @@ var highscore = 0
 
 const MAX_SCORE = 1000000
 
+var game_is_running = false
 var strokes = 0
 signal update_strokes
 
 
 func add_stroke():
-	strokes += 1
-	update_strokes.emit(strokes)
+	if game_is_running:
+		strokes += 1
+		update_strokes.emit(strokes)
 
 func get_score_for_leaderboard():
 	if last_score >= MAX_SCORE:
@@ -27,4 +29,10 @@ func new_score(sc):
 		highscore = last_score
 
 func level_finished():
+	game_is_running = false
 	new_score(strokes)
+
+func start_game():
+	strokes = 0
+	update_strokes.emit(strokes)
+	game_is_running = true

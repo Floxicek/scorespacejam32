@@ -1,13 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://byg0w6qpm26fq"]
+[gd_scene load_steps=8 format=3 uid="uid://byg0w6qpm26fq"]
 
 [ext_resource type="Script" path="res://scripts/flag.gd" id="1_74yar"]
 [ext_resource type="Texture2D" uid="uid://cohxhmp0828er" path="res://assets/Flag.png" id="1_f88ji"]
+[ext_resource type="Texture2D" uid="uid://bnrpo24oplafl" path="res://assets/particle.png" id="3_e1bqp"]
+
+[sub_resource type="Curve" id="Curve_tuk6c"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.317507, 0.810385), 0.852003, 0.852003, 0, 0, Vector2(0.715134, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_c2fi0"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.326861, 0.656958)
+colors = PackedColorArray(0.266667, 0.686275, 0.411765, 1, 0.894118, 0.760784, 0.478431, 1, 0.941176, 0.392157, 0.286275, 1)
+
+[sub_resource type="Curve" id="Curve_v4ai7"]
+min_value = -1.0
+_data = [Vector2(0, -0.380397), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8d4c"]
 size = Vector2(73, 119)
 
 [node name="Flag" type="Area2D"]
 script = ExtResource("1_74yar")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-27, -34)
+emitting = false
+amount = 100
+one_shot = true
+randomness = 0.6
+local_coords = true
+texture = ExtResource("3_e1bqp")
+direction = Vector2(0, -1)
+initial_velocity_min = 621.18
+initial_velocity_max = 677.36
+angular_velocity_min = 280.0
+angular_velocity_max = 280.0
+linear_accel_min = 11.3
+linear_accel_max = 11.3
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_tuk6c")
+color_initial_ramp = SubResource("Gradient_c2fi0")
+hue_variation_curve = SubResource("Curve_v4ai7")
 
 [node name="Flag" type="Sprite2D" parent="."]
 position = Vector2(-4, -53)
@@ -17,4 +52,8 @@ texture = ExtResource("1_f88ji")
 position = Vector2(-5.5, -50.5)
 shape = SubResource("RectangleShape2D_w8d4c")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
