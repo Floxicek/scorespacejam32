@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd8re1hi5jy3o"]
+
+[ext_resource type="Script" path="res://scripts/fake_flag.gd" id="1_1xq48"]
+[ext_resource type="Texture2D" uid="uid://cohxhmp0828er" path="res://assets/Flag.png" id="2_uuwl4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8d4c"]
+size = Vector2(73, 119)
+
+[node name="FakeFlag" type="Area2D"]
+script = ExtResource("1_1xq48")
+
+[node name="Flag" type="Sprite2D" parent="."]
+position = Vector2(-4, -53)
+texture = ExtResource("2_uuwl4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, -50.5)
+shape = SubResource("RectangleShape2D_w8d4c")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
