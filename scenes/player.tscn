@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cp36kiaghry3t"]
+[gd_scene load_steps=11 format=3 uid="uid://cp36kiaghry3t"]
 
 [ext_resource type="Script" path="res://scenes/player_export.gd" id="1_3r3ia"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="1_ev6oj"]
@@ -14,6 +14,10 @@ radius = 9.0
 [sub_resource type="Curve" id="Curve_pg8h6"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.330717, 0.685567), 1.43686, 1.43686, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_xcac4"]
+offsets = PackedFloat32Array(0, 0.227876)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_3r3ia")
@@ -77,11 +81,13 @@ top_level = true
 width = 5.0
 width_curve = SubResource("Curve_pg8h6")
 default_color = Color(0.154386, 0.230605, 0.308165, 1)
+gradient = SubResource("Gradient_xcac4")
 joint_mode = 2
 end_cap_mode = 2
 sharp_limit = 10.0
 antialiased = true
 script = ExtResource("7_yk7hg")
 player = NodePath("../PlayerRigid")
+max_length = 20
 
 [connection signal="body_entered" from="PlayerRigid" to="PlayerRigid" method="_on_body_entered"]
