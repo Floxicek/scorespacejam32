@@ -11,11 +11,14 @@ func _ready():
 	$UsernameInput.hide()
 
 func show_me():
-	if not username:
-		$UsernameInput.show()
+	if SceneManager.current_level != 0:
+		if not username:
+			$UsernameInput.show()
+		else:
+			submit_score()
+			show_scoreboard()
 	else:
-		submit_score()
-		show_scoreboard()
+		SceneManager.new_scene(1)
 
 func _on_username_cancel_button_pressed():
 	show_scoreboard()
@@ -28,7 +31,6 @@ func _on_username_sumbit_button_pressed():
 	show_scoreboard()
 
 func submit_score():
-	if SceneManager.current_level != 0:
 		var sc = Score.get_score_for_leaderboard()
 		if not sc == -1:
 			

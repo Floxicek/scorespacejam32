@@ -30,6 +30,7 @@ func new_score(sc):
 
 func level_finished():
 	game_is_running = false
+	print("game_is_running", game_is_running)
 	new_score(strokes)
 
 func start_game():
