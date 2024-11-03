@@ -62,8 +62,8 @@ texture_progress_offset = Vector2(-16, -16)
 [node name="Arrow" type="Marker2D" parent="PlayerRigid"]
 
 [node name="Arrow" type="Sprite2D" parent="PlayerRigid/Arrow"]
-position = Vector2(0, -29)
-scale = Vector2(0.0487452, 0.0487452)
+position = Vector2(0, -55)
+scale = Vector2(0.0772201, 0.0772201)
 texture = ExtResource("5_cgmkp")
 
 [connection signal="body_entered" from="PlayerRigid" to="PlayerRigid" method="_on_body_entered"]

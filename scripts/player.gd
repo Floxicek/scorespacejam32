@@ -54,14 +54,14 @@ func _process(_delta: float) -> void:
 	if is_moving:
 		#$Arrow.default_color = Color(255,255,255,.3)
 		#$Arrow.gradient.colors[0] = Color(255,255,255,.3)
-		$Arrow/Arrow.self_modulate = Color(255,255,255,.3)
+		change_arrow_color(.3)
 		power = 0
 		$ProgressBar.value = power / max_power * 100
 		return
 
 	#$Arrow.gradient.colors[0] = Color.WHITE
 	
-	$Arrow/Arrow.self_modulate = Color(255,255,255)
+	change_arrow_color(1)
 	if Input.is_action_pressed("ui_accept"):
 		power += power_speed * _delta
 		power = clamp(power, 0, max_power)
@@ -77,6 +77,10 @@ func _physics_process(_delta):
 	$ProgressBar.rotation = - self.rotation
 
 
+
+func change_arrow_color(alpha: float):
+	var tween := get_tree().create_tween()
+	tween.tween_property($Arrow/Arrow, "self_modulate:a", alpha, .3)
 
 
 #func _on_body_entered(body: Node) -> void:
