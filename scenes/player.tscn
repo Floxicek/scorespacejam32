@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/player_export.gd" id="1_3r3ia"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="1_ev6oj"]
-[ext_resource type="PhysicsMaterial" uid="uid://35e8n4mnpfdk" path="res://assets/player_physics_material.tres" id="2_x306v"]
+[ext_resource type="PhysicsMaterial" uid="uid://d2mq347lug1e7" path="res://assets/player_physics_material.tres" id="2_x306v"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_ur02k"]
 [ext_resource type="Texture2D" uid="uid://858caggshc0b" path="res://assets/ball.png" id="4_44ji3"]
 [ext_resource type="Texture2D" uid="uid://pg2mp301tuiv" path="res://assets/arrow.png" id="5_cgmkp"]
@@ -19,11 +19,11 @@ point_count = 3
 script = ExtResource("1_3r3ia")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+offset = Vector2(0, -200)
+zoom = Vector2(1.4, 1.4)
 process_callback = 0
 script = ExtResource("1_ev6oj")
 player = NodePath("../PlayerRigid")
-ignore_height = -100
-height_offset = 200
 
 [node name="PlayerRigid" type="RigidBody2D" parent="." groups=["Player"]]
 z_index = 7

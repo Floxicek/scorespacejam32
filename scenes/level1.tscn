@@ -1,263 +1,48 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwkxaa4ttbydc"]
+[gd_scene load_steps=7 format=4 uid="uid://bwkxaa4ttbydc"]
 
-[ext_resource type="PackedScene" uid="uid://bpm8mkbr2jcqf" path="res://scenes/platform_small.tscn" id="2_d08ss"]
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="2_mndox"]
 [ext_resource type="PackedScene" uid="uid://dd8re1hi5jy3o" path="res://scenes/fake_flag.tscn" id="4_ibiv4"]
-[ext_resource type="PackedScene" uid="uid://dmub85j6lafvu" path="res://scenes/platform_mid.tscn" id="4_mmlb6"]
-[ext_resource type="PackedScene" uid="uid://wbqynctxehg1" path="res://scenes/sand_platform_mid.tscn" id="6_psihq"]
-[ext_resource type="PackedScene" uid="uid://ufn7b4u1moeq" path="res://scenes/sand_platform_small.tscn" id="6_sgfas"]
-[ext_resource type="PackedScene" uid="uid://c3bptrg06rcus" path="res://scenes/platform_small_high.tscn" id="7_rn4es"]
-[ext_resource type="PackedScene" uid="uid://u3b12rjivl4h" path="res://scenes/platform_long.tscn" id="7_xodv2"]
-[ext_resource type="PhysicsMaterial" uid="uid://dp7yo0dajty72" path="res://assets/platform_physics_material.tres" id="8_yuxvl"]
 [ext_resource type="PackedScene" uid="uid://cp36kiaghry3t" path="res://scenes/player.tscn" id="10_bvm8b"]
 [ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="11_45low"]
-[ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="12_52wpu"]
+[ext_resource type="PackedScene" path="res://scenes/safety_net.tscn" id="12_52wpu"]
 [ext_resource type="TileSet" uid="uid://2ug3u3nxywaj" path="res://assets/tileset/tileset.tres" id="13_ka4yc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rt6v"]
-size = Vector2(9997, 111)
 
 [node name="Map" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 
-[node name="Ground" type="StaticBody2D" parent="Environment" groups=["Platform"]]
-collision_layer = 3
-physics_material_override = ExtResource("8_yuxvl")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Ground"]
-position = Vector2(0.5, 45.5)
-shape = SubResource("RectangleShape2D_1rt6v")
-
-[node name="GroundBack" type="Polygon2D" parent="Environment/Ground"]
-self_modulate = Color(0.278431, 0.278431, 0.278431, 1)
-position = Vector2(0, 79)
-polygon = PackedVector2Array(-5000, -100, 5000, -100, 5000, 0, -5000, 0)
-
-[node name="Ground" type="Polygon2D" parent="Environment/Ground"]
-self_modulate = Color(0.215686, 0.219608, 0.215686, 1)
-position = Vector2(0, 102)
-polygon = PackedVector2Array(-5000, -100, 5000, -100, 5000, 0, -5000, 0)
-
 [node name="Flag" parent="Environment" instance=ExtResource("2_mndox")]
-position = Vector2(736, -2176)
+position = Vector2(352, -2880)
 
-[node name="PlatformMid" parent="Environment" instance=ExtResource("4_mmlb6")]
-position = Vector2(-736, -1568)
+[node name="FakeFlag" parent="Environment" instance=ExtResource("4_ibiv4")]
+position = Vector2(-544, -1600)
 
-[node name="FakeFlag" parent="Environment/PlatformMid" instance=ExtResource("4_ibiv4")]
-position = Vector2(-96, -64)
-
-[node name="SikeText" type="Label" parent="Environment/PlatformMid"]
+[node name="SikeText" type="Label" parent="Environment"]
 unique_name_in_owner = true
 modulate = Color(0, 0, 0, 0)
-offset_left = -64.0
-offset_top = -416.0
-offset_right = 356.0
-offset_bottom = -203.0
+offset_left = -512.0
+offset_top = -1952.0
+offset_right = -92.0
+offset_bottom = -1739.0
 theme_override_font_sizes/font_size = 50
 text = "SIKE!
 You thought THIS
 is the end?"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="PlatformSmallHigh" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -64)
-collision_layer = 1
+[node name="Map" type="TileMapLayer" parent="Environment"]
+tile_map_data = PackedByteArray("AAD6////AAACAAAAAAD7////AAACAAAAAAD8////AAACAAAAAAD9////AAACAAAAAAD+////AAACAAAAAAD/////AAACAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAACAP//AAACAAAAAAADAP//AAACAAAAAAAEAP//AAACAAAAAAAFAP//AAACAAAAAAAGAOr/AAABAAEAAAAGAOv/AAABAAEAAAAGAOz/AAABAAEAAAAGAO3/AAABAAEAAAAGAO7/AAABAAEAAAAGAO//AAABAAEAAAAGAPD/AAABAAEAAAAGAPH/AAABAAEAAAAGAPL/AAABAAEAAAAGAPP/AAABAAEAAAAGAPT/AAABAAEAAAAGAPX/AAABAAEAAAAGAPb/AAABAAEAAAAGAPf/AAABAAEAAAAGAPj/AAABAAEAAAAGAPn/AAABAAEAAAAGAPr/AAABAAEAAAAGAPv/AAABAAEAAAAGAPz/AAABAAEAAAAGAP3/AAABAAEAAAAGAP7/AAABAAEAAAD5//7/AAADAAEAAAD5//3/AAADAAEAAAD5//z/AAADAAEAAAD5//v/AAADAAEAAAD5//r/AAADAAEAAAD5//n/AAADAAEAAAD5//j/AAADAAEAAAD5//f/AAADAAEAAAD5//b/AAADAAEAAAD5//X/AAADAAEAAAD5//T/AAADAAEAAAD5//P/AAADAAEAAAD5//L/AAADAAEAAAD5//H/AAADAAEAAAD5//D/AAADAAEAAAD5/+//AAADAAEAAAD5/+7/AAADAAEAAAD5/+3/AAADAAEAAAD5/+z/AAADAAEAAAD5/+v/AAADAAEAAAD5/+r/AAADAAEAAAAGAP//AAABAAEAAAD5////AAADAAEAAAD5/wAAAAACAAEAAAD6/wAAAAACAAEAAAD7/wAAAAACAAEAAAD8/wAAAAACAAEAAAD9/wAAAAACAAEAAAD+/wAAAAACAAEAAAD//wAAAAACAAEAAAAAAAAAAAACAAEAAAABAAAAAAACAAEAAAACAAAAAAACAAEAAAADAAAAAAACAAEAAAAEAAAAAAACAAEAAAAFAAAAAAACAAEAAAAGAAAAAAACAAEAAAD9//D/AAAFAAIAAAD8//D/AAACAAAAAAD7//D/AAACAAAAAAD6//D/AAACAAAAAAD5/93/AAADAAEAAAD5/97/AAADAAEAAAD5/9//AAADAAEAAAD5/+D/AAADAAEAAAD5/+H/AAADAAEAAAD5/+L/AAADAAEAAAD5/+P/AAADAAEAAAD5/+T/AAADAAEAAAD5/+X/AAADAAEAAAD5/+b/AAADAAEAAAD5/+f/AAADAAEAAAD5/+j/AAADAAEAAAD5/+n/AAADAAEAAAAGAN3/AAABAAEAAAAGAN7/AAABAAEAAAAGAN//AAABAAEAAAAGAOD/AAABAAEAAAAGAOH/AAABAAEAAAAGAOL/AAABAAEAAAAGAOP/AAABAAEAAAAGAOT/AAABAAEAAAAGAOX/AAABAAEAAAAGAOb/AAABAAEAAAAGAOf/AAABAAEAAAAGAOj/AAABAAEAAAAGAOn/AAABAAEAAAD///T/AAAEAAIAAAABAPT/AAAFAAIAAAAAAPT/AAACAAAAAAA=")
+tile_set = ExtResource("13_ka4yc")
 
-[node name="PlatformSmallHigh3" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -192)
-collision_layer = 1
-
-[node name="PlatformSmallHigh4" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -320)
-collision_layer = 1
-
-[node name="PlatformSmallHigh5" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -448)
-collision_layer = 1
-
-[node name="PlatformSmallHigh6" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -576)
-collision_layer = 1
-
-[node name="PlatformSmallHigh7" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -704)
-collision_layer = 1
-
-[node name="PlatformSmallHigh2" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -832)
-collision_layer = 1
-
-[node name="PlatformSmallHigh8" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -960)
-collision_layer = 1
-
-[node name="PlatformSmallHigh9" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -1088)
-collision_layer = 1
-
-[node name="PlatformSmallHigh10" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -1216)
-collision_layer = 1
-
-[node name="PlatformSmallHigh11" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -1344)
-collision_layer = 1
-
-[node name="PlatformSmallHigh12" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -1472)
-collision_layer = 1
-
-[node name="PlatformSmallHigh13" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -1600)
-collision_layer = 1
-
-[node name="PlatformSmallHigh14" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -1728)
-collision_layer = 1
-
-[node name="PlatformSmallHigh15" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -1856)
-collision_layer = 1
-
-[node name="PlatformSmallHigh16" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -1984)
-collision_layer = 1
-
-[node name="PlatformSmallHigh17" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -2112)
-collision_layer = 1
-
-[node name="PlatformSmallHigh18" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -2240)
-collision_layer = 1
-
-[node name="PlatformSmallHigh19" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -64)
-collision_layer = 1
-
-[node name="PlatformSmallHigh20" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -192)
-collision_layer = 1
-
-[node name="PlatformSmallHigh21" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -320)
-collision_layer = 1
-
-[node name="PlatformSmallHigh22" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -448)
-collision_layer = 1
-
-[node name="PlatformSmallHigh23" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -576)
-collision_layer = 1
-
-[node name="PlatformSmallHigh24" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -704)
-collision_layer = 1
-
-[node name="PlatformSmallHigh25" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -832)
-collision_layer = 1
-
-[node name="PlatformSmallHigh26" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -960)
-collision_layer = 1
-
-[node name="PlatformSmallHigh27" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -1088)
-collision_layer = 1
-
-[node name="PlatformSmallHigh28" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -1216)
-collision_layer = 1
-
-[node name="PlatformSmallHigh29" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -1344)
-collision_layer = 1
-
-[node name="PlatformSmallHigh30" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -1472)
-collision_layer = 1
-
-[node name="PlatformSmallHigh31" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -1600)
-collision_layer = 1
-
-[node name="PlatformSmallHigh32" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -1728)
-collision_layer = 1
-
-[node name="PlatformSmallHigh33" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -1856)
-collision_layer = 1
-
-[node name="PlatformSmallHigh34" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -1984)
-collision_layer = 1
-
-[node name="PlatformSmallHigh35" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -2112)
-collision_layer = 1
-
-[node name="PlatformSmallHigh36" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -2240)
-collision_layer = 1
-
-[node name="PlatformSmallHigh37" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -2368)
-collision_layer = 1
-
-[node name="PlatformSmallHigh38" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -2496)
-collision_layer = 1
-
-[node name="PlatformSmallHigh39" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(-960, -2624)
-collision_layer = 1
-
-[node name="PlatformSmallHigh40" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -2368)
-collision_layer = 1
-
-[node name="PlatformSmallHigh41" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -2496)
-collision_layer = 1
-
-[node name="PlatformSmallHigh42" parent="Environment" instance=ExtResource("7_rn4es")]
-position = Vector2(960, -2624)
-collision_layer = 1
-
-[node name="SandPlatformMid2" parent="Environment" instance=ExtResource("6_psihq")]
-position = Vector2(576, -288)
-
-[node name="SandPlatformSmall" parent="Environment" instance=ExtResource("6_sgfas")]
-position = Vector2(-192, -672)
-
-[node name="PlatformSmall2" parent="Environment" instance=ExtResource("2_d08ss")]
-position = Vector2(96, -1248)
-
-[node name="PlatformLong" parent="Environment" instance=ExtResource("7_xodv2")]
-position = Vector2(-352, -2112)
-
-[node name="PlatformLong2" parent="Environment" instance=ExtResource("7_xodv2")]
-position = Vector2(64, -2112)
-
-[node name="PlatformLong3" parent="Environment" instance=ExtResource("7_xodv2")]
-position = Vector2(480, -2112)
-
-[node name="PlatformLong4" parent="Environment" instance=ExtResource("7_xodv2")]
-position = Vector2(672, -2112)
+[node name="MapSand" type="TileMapLayer" parent="Environment"]
+tile_map_data = PackedByteArray("AAD8//j/AQACAAAAAAD9//j/AQAFAAIAAAAEAPz/AQAFAAIAAAACAPz/AQAEAAIAAAADAPz/AQACAAAAAAD7//j/AQAEAAIAAAA=")
+tile_set = ExtResource("13_ka4yc")
 
 [node name="Player" parent="." instance=ExtResource("10_bvm8b")]
-position = Vector2(-1, -204)
+position = Vector2(0, -192)
 
 [node name="UI" parent="." instance=ExtResource("11_45low")]
 
 [node name="SafetyNet" parent="." instance=ExtResource("12_52wpu")]
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_set = ExtResource("13_ka4yc")
