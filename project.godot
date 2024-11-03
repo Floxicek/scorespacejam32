@@ -69,7 +69,7 @@ launch={
 [physics]
 
 2d/physics_engine="Rapier2D"
-2d/solver/contact_max_allowed_penetration=0.08
+2d/solver/contact_max_allowed_penetration=0.05
 common/physics_interpolation=true
 
 [rendering]
