@@ -5,11 +5,12 @@
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7iac"]
 texture = ExtResource("1_hfhng")
+separation = Vector2i(0, 10)
 texture_region_size = Vector2i(75, 75)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, -37.5, 37.5, -37.5, 37.5, 37.5, -37.5, 37.5, -37.5, -7.54015)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(37.5, -26.7857, -16.0714, -26.7857, -37.5, -5.35714, -37.5, 37.5, 37.5, 37.5)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-37.5, -37.5, 7.34173, -37.5, 37.5, -6.3496, 37.5, 37.5, -37.5, 37.5)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-37.5, -26.7857, 16.0714, -26.7857, 37.5, -5.35714, 37.5, 37.5, -37.5, 37.5)
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-37.5, -37.5, 37.5, -37.5, 37.5, 37.5, -37.5, 37.5)
 0:1/0 = 0
