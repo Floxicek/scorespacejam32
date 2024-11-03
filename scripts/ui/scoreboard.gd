@@ -33,5 +33,5 @@ func show_scoreboard():
 	
 	for i in scoreboards:
 		var lab = Label.new()
-		lab.text = str(i["player_name"]) + " " + str(i["score"])
+		lab.text = str(i["player_name"]) + " " + str(Score.read_score_from_leaderboard(i["score"]))
 		%ScoreboardVBox.add_child(lab)

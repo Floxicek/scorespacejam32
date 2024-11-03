@@ -1,5 +1,10 @@
 extends Area2D
 
+@export var ui: Control
+
+func _ready():
+	Score.start_game()
+
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		print("Winnniiing")
@@ -7,4 +12,8 @@ func _on_body_entered(body):
 		# Maybe show some fireworks...
 		# End score
 		Score.level_finished()
-		get_tree().change_scene_to_file("res://scenes/ui/scoreboard.tscn")
+		$Timer.start()
+		$CPUParticles2D.restart()
+
+func _on_timer_timeout():
+	ui.show_scoreboard()
