@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://cvj1qmb806ago"]
+[gd_scene load_steps=10 format=4 uid="uid://cvj1qmb806ago"]
 
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="2_012ry"]
+[ext_resource type="Texture2D" uid="uid://bxo6d3njabbtg" path="res://assets/kenney-input/xbox_button_a.png" id="4_gmatk"]
 [ext_resource type="PackedScene" uid="uid://cp36kiaghry3t" path="res://scenes/player.tscn" id="8_os17w"]
 [ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="9_xb0m2"]
 [ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="10_b8lpw"]
@@ -24,35 +25,39 @@ tile_set = ExtResource("11_hxs5t")
 [node name="Keybinds" type="Node2D" parent="Environment"]
 modulate = Color(0.215686, 0.219608, 0.215686, 1)
 
-[node name="KeyboardSpace" type="Sprite2D" parent="Environment/Keybinds"]
-position = Vector2(65, -373)
-texture = ExtResource("16_w76aa")
-
 [node name="AimCombined" type="Sprite2D" parent="Environment/Keybinds"]
-position = Vector2(-257, -376)
+position = Vector2(-566, -345)
 texture = ExtResource("12_3vcbg")
 
 [node name="Label" type="Label" parent="Environment/Keybinds"]
-offset_left = -359.0
-offset_top = -539.0
-offset_right = -158.0
-offset_bottom = -483.0
+offset_left = -668.0
+offset_top = -508.0
+offset_right = -467.0
+offset_bottom = -452.0
 theme_override_fonts/font = ExtResource("13_ntubx")
 theme_override_font_sizes/font_size = 41
 text = "Aim using"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="XboxButtonA" type="Sprite2D" parent="Environment/Keybinds"]
+position = Vector2(-229, -425)
+texture = ExtResource("4_gmatk")
+
 [node name="Label2" type="Label" parent="Environment/Keybinds"]
-offset_left = -43.0
-offset_top = -539.0
-offset_right = 197.0
-offset_bottom = -483.0
+offset_left = -352.0
+offset_top = -508.0
+offset_right = -112.0
+offset_bottom = -452.0
 theme_override_fonts/font = ExtResource("13_ntubx")
 theme_override_font_sizes/font_size = 41
 text = "Charge using"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="KeyboardSpace" type="Sprite2D" parent="Environment/Keybinds"]
+position = Vector2(-223, -349)
+texture = ExtResource("16_w76aa")
 
 [node name="Flag" parent="Environment" instance=ExtResource("2_012ry")]
 position = Vector2(-706, -1394)
