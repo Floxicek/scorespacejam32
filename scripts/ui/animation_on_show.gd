@@ -19,5 +19,7 @@ func animation_on_show():
 	add_tween("position", default_position, duration)
 
 func add_tween(property: String, value, seconds: float) -> void:
+	if not is_inside_tree():
+		return
 	var tween = get_tree().create_tween()
 	tween.tween_property(target, property, value, seconds).set_trans(transition_type)

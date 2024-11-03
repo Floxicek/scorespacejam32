@@ -1,7 +1,7 @@
 extends Control
 
 var scoreboards
-var username = ""
+var username = "Testicek"
 
 func _ready():
 	#SilentWolf.Scores.wipe_leaderboard()
@@ -23,15 +23,20 @@ func _on_username_sumbit_button_pressed():
 	username = %Username.text
 	var sc = Score.get_score_for_leaderboard()
 	if not sc == -1:
-		SilentWolf.Scores.save_score(%Username.text, sc)
+		
+		var sw_result: Dictionary = await SilentWolf.Scores.save_score(%Username.text, sc, "level0").sw_save_score_complete
+		print("Score persisted successfully: " + str(sw_result.score_id))
 	show_me()
 
 func show_scoreboard():
 	print("Showing scoreboard")
+	if SceneManager.current_level == 0:
+		_on_continue_pressed()
+		return
 	$UsernameInput.hide()
 	$Scoreboard.show()
 	await get_tree().create_timer(3).timeout
-	var sw_result = await SilentWolf.Scores.get_scores(200).sw_get_scores_complete
+	var sw_result = await SilentWolf.Scores.get_scores(200, "level"+str(SceneManager.current_level)).sw_get_scores_complete
 	var scoreboards = sw_result.scores
 	print("Scores: " + str(sw_result.scores))
 	
