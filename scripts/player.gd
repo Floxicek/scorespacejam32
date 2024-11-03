@@ -87,7 +87,7 @@ func change_arrow_color(alpha: float):
 
 func _on_body_entered(body: Node) -> void:
 	if body.name in layer_damp:
-		print("Setting to ", layer_damp[body.name])
+		#print("Setting to ", layer_damp[body.name])
 		self.angular_damp = layer_damp[body.name]
 	
 	

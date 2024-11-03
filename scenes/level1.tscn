@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dd8re1hi5jy3o" path="res://scenes/fake_flag.tscn" id="4_ibiv4"]
 [ext_resource type="PackedScene" uid="uid://cp36kiaghry3t" path="res://scenes/player.tscn" id="10_bvm8b"]
 [ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="11_45low"]
-[ext_resource type="PackedScene" path="res://scenes/safety_net.tscn" id="12_52wpu"]
+[ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="12_52wpu"]
 [ext_resource type="TileSet" uid="uid://2ug3u3nxywaj" path="res://assets/tileset/tileset.tres" id="13_ka4yc"]
 
 [node name="Map" type="Node2D"]

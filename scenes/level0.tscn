@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxo6d3njabbtg" path="res://assets/kenney-input/xbox_button_a.png" id="4_gmatk"]
 [ext_resource type="PackedScene" uid="uid://cp36kiaghry3t" path="res://scenes/player.tscn" id="8_os17w"]
 [ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="9_xb0m2"]
-[ext_resource type="PackedScene" path="res://scenes/safety_net.tscn" id="10_b8lpw"]
+[ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="10_b8lpw"]
 [ext_resource type="TileSet" uid="uid://2ug3u3nxywaj" path="res://assets/tileset/tileset.tres" id="11_hxs5t"]
 [ext_resource type="Texture2D" uid="uid://cu0rqdmx2keep" path="res://assets/kenney-input/aim_combined.png" id="12_3vcbg"]
 [ext_resource type="FontFile" uid="uid://objrniu567jt" path="res://assets/fonts/Fredoka-Medium.ttf" id="13_ntubx"]
@@ -14,14 +14,14 @@
 
 [node name="Environment" type="Node2D" parent="."]
 
-[node name="Keybinds" type="Node2D" parent="Environment"]
+[node name="Dark" type="Node2D" parent="Environment"]
 modulate = Color(0.215686, 0.219608, 0.215686, 1)
 
-[node name="AimCombined" type="Sprite2D" parent="Environment/Keybinds"]
+[node name="AimCombined" type="Sprite2D" parent="Environment/Dark"]
 position = Vector2(-474, -285)
 texture = ExtResource("12_3vcbg")
 
-[node name="Label" type="Label" parent="Environment/Keybinds"]
+[node name="Label" type="Label" parent="Environment/Dark"]
 offset_left = -576.0
 offset_top = -448.0
 offset_right = -375.0
@@ -33,11 +33,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="XboxButtonA" type="Sprite2D" parent="Environment/Keybinds"]
+[node name="XboxButtonA" type="Sprite2D" parent="Environment/Dark"]
 position = Vector2(-192, -352)
 texture = ExtResource("4_gmatk")
 
-[node name="Label2" type="Label" parent="Environment/Keybinds"]
+[node name="Label2" type="Label" parent="Environment/Dark"]
 offset_left = -320.0
 offset_top = -448.0
 offset_right = -80.0
@@ -49,12 +49,38 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="KeyboardSpace" type="Sprite2D" parent="Environment/Keybinds"]
+[node name="KeyboardSpace" type="Sprite2D" parent="Environment/Dark"]
 position = Vector2(-192, -288)
 texture = ExtResource("16_w76aa")
 
-[node name="Flag" parent="Environment" instance=ExtResource("2_012ry")]
+[node name="Label3" type="Label" parent="Environment/Dark"]
+offset_left = 214.0
+offset_top = -630.0
+offset_right = 593.0
+offset_bottom = -527.0
+theme_override_fonts/font = ExtResource("13_ntubx")
+theme_override_font_sizes/font_size = 41
+text = "Sand doesn't bounce
+& has more friction "
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="Environment/Dark"]
+offset_left = 114.0
+offset_top = -1394.0
+offset_right = 493.0
+offset_bottom = -1291.0
+theme_override_fonts/font = ExtResource("13_ntubx")
+theme_override_font_sizes/font_size = 41
+text = "This is not sand;D"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Flag" parent="Environment" node_paths=PackedStringArray("ui") instance=ExtResource("2_012ry")]
 position = Vector2(-512, -1600)
+ui = NodePath("../../UI")
 
 [node name="Map" type="TileMapLayer" parent="Environment"]
 tile_map_data = PackedByteArray("AAD6////AAACAAAAAAD7////AAACAAAAAAD8////AAACAAAAAAD9////AAACAAAAAAD+////AAACAAAAAAD/////AAACAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAACAP//AAACAAAAAAADAP//AAACAAAAAAAEAP//AAACAAAAAAAFAP//AAACAAAAAAAGAOr/AAABAAEAAAAGAOv/AAABAAEAAAAGAOz/AAABAAEAAAAGAO3/AAABAAEAAAAGAO7/AAABAAEAAAAGAO//AAABAAEAAAAGAPD/AAABAAEAAAAGAPH/AAABAAEAAAAGAPL/AAABAAEAAAAGAPP/AAABAAEAAAAGAPT/AAABAAEAAAAGAPX/AAABAAEAAAAGAPb/AAABAAEAAAAGAPf/AAABAAEAAAAGAPj/AAABAAEAAAAGAPn/AAABAAEAAAAGAPr/AAABAAEAAAAGAPv/AAABAAEAAAAGAPz/AAABAAEAAAAGAP3/AAABAAEAAAAGAP7/AAABAAEAAAD5//7/AAADAAEAAAD5//3/AAADAAEAAAD5//z/AAADAAEAAAD5//v/AAADAAEAAAD5//r/AAADAAEAAAD5//n/AAADAAEAAAD5//j/AAADAAEAAAD5//f/AAADAAEAAAD5//b/AAADAAEAAAD5//X/AAADAAEAAAD5//T/AAADAAEAAAD5//P/AAADAAEAAAD5//L/AAADAAEAAAD5//H/AAADAAEAAAD5//D/AAADAAEAAAD5/+//AAADAAEAAAD5/+7/AAADAAEAAAD5/+3/AAADAAEAAAD5/+z/AAADAAEAAAD5/+v/AAADAAEAAAD5/+r/AAADAAEAAAAGAP//AAABAAEAAAD5////AAADAAEAAAD5/wAAAAACAAEAAAD6/wAAAAACAAEAAAD7/wAAAAACAAEAAAD8/wAAAAACAAEAAAD9/wAAAAACAAEAAAD+/wAAAAACAAEAAAD//wAAAAACAAEAAAAAAAAAAAACAAEAAAABAAAAAAACAAEAAAACAAAAAAACAAEAAAADAAAAAAACAAEAAAAEAAAAAAACAAEAAAAFAAAAAAACAAEAAAAGAAAAAAACAAEAAAABAPT/AAAEAAIAAAACAPT/AAACAAAAAAD9//D/AAAFAAIAAAD8//D/AAACAAAAAAD7//D/AAACAAAAAAD6//D/AAACAAAAAAAEAPT/AAAFAAIAAAADAPT/AAACAAAAAAD5/93/AAADAAEAAAD5/97/AAADAAEAAAD5/9//AAADAAEAAAD5/+D/AAADAAEAAAD5/+H/AAADAAEAAAD5/+L/AAADAAEAAAD5/+P/AAADAAEAAAD5/+T/AAADAAEAAAD5/+X/AAADAAEAAAD5/+b/AAADAAEAAAD5/+f/AAADAAEAAAD5/+j/AAADAAEAAAD5/+n/AAADAAEAAAAGAN3/AAABAAEAAAAGAN7/AAABAAEAAAAGAN//AAABAAEAAAAGAOD/AAABAAEAAAAGAOH/AAABAAEAAAAGAOL/AAABAAEAAAAGAOP/AAABAAEAAAAGAOT/AAABAAEAAAAGAOX/AAABAAEAAAAGAOb/AAABAAEAAAAGAOf/AAABAAEAAAAGAOj/AAABAAEAAAAGAOn/AAABAAEAAAA=")
@@ -64,9 +90,8 @@ tile_set = ExtResource("11_hxs5t")
 tile_map_data = PackedByteArray("AAACAPz/AQAEAAIAAAADAPz/AQACAAAAAAAEAPz/AQACAAAAAAAFAPz/AQACAAAAAAD6//j/AQACAAAAAAD7//j/AQACAAAAAAD8//j/AQACAAAAAAD9//j/AQAFAAIAAAA=")
 tile_set = ExtResource("11_hxs5t")
 
-[node name="Player" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("8_os17w")]
+[node name="Player" parent="." instance=ExtResource("8_os17w")]
 position = Vector2(-1, -204)
-tilemap = NodePath("../Map")
 
 [node name="UI" parent="." instance=ExtResource("9_xb0m2")]
 

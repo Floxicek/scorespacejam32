@@ -25,6 +25,7 @@ size = Vector2(73, 119)
 script = ExtResource("1_74yar")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 7
 position = Vector2(-27, -34)
 emitting = false
 amount = 100
