@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci8l58ygxiu0y"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_eif0c"]
+
+[sub_resource type="Theme" id="Theme_fhrim"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_fhrim")
+script = ExtResource("1_eif0c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 265.0
+offset_bottom = 301.0
+theme_override_constants/separation = 20
+
+[node name="Tutorial" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Tutorial"
+
+[node name="LevelEasy" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Level easy"
+
+[node name="LevelHard" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Level hard"
+
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="VBoxContainer/LevelEasy" to="." method="_on_level_easy_pressed"]
+[connection signal="pressed" from="VBoxContainer/LevelHard" to="." method="_on_level_hard_pressed"]

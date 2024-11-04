@@ -20,8 +20,9 @@ tile_set = ExtResource("13_ka4yc")
 tile_map_data = PackedByteArray("AAD8//j/AQACAAAAAAD9//j/AQAFAAIAAAAEAPz/AQAFAAIAAAACAPz/AQAEAAIAAAADAPz/AQACAAAAAAD7//j/AQAEAAIAAAAFAOL/AQAEAAIAAAD7/+H/AQAFAAIAAAD6/+H/AQACAAAAAAADANb/AQAEAAIAAAAEANb/AQACAAAAAAAFANb/AQACAAAAAAD6/9f/AQACAAAAAAD7/8//AQAFAAIAAAD6/8//AQACAAAAAAD9/8r/AQAEAAIAAAD+/8r/AQACAAAAAAD//8f/AQAAAAEAAAACAMf/AQABAAAAAAADAMf/AQAFAAIAAAD//77/AQAEAAIAAAAAAL7/AQAFAAIAAAA=")
 tile_set = ExtResource("13_ka4yc")
 
-[node name="Flag" parent="Environment" instance=ExtResource("2_mndox")]
+[node name="Flag" parent="Environment" node_paths=PackedStringArray("ui") instance=ExtResource("2_mndox")]
 position = Vector2(550, -7100)
+ui = NodePath("../../UI")
 
 [node name="FakeFlag" parent="Environment" instance=ExtResource("4_ibiv4")]
 position = Vector2(-550, -1600)

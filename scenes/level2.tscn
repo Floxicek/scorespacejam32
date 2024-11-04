@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cqqiuyxl8e45p"]
+[gd_scene load_steps=9 format=4 uid="uid://ccnw4wwl38i3a"]
 
 [ext_resource type="TileSet" uid="uid://2ug3u3nxywaj" path="res://assets/tileset/tileset.tres" id="1_den7l"]
 [ext_resource type="PackedScene" uid="uid://byg0w6qpm26fq" path="res://scenes/flag.tscn" id="2_mc6tb"]
@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bxibr3cgsdhaa" path="res://assets/fonts/Fredoka-Light.ttf" id="4_2208f"]
 [ext_resource type="PackedScene" uid="uid://cp36kiaghry3t" path="res://scenes/player.tscn" id="5_1pv4f"]
 [ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="6_npwj7"]
-[ext_resource type="PackedScene" path="res://scenes/safety_net.tscn" id="7_gchus"]
+[ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="7_gchus"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8d4c"]
 size = Vector2(242, 119)
@@ -23,8 +23,9 @@ tile_set = ExtResource("1_den7l")
 tile_map_data = PackedByteArray("AAD9//j/AQAFAAIAAAACAPz/AQAEAAIAAAADAPz/AQAFAAIAAAD8//j/AQAEAAIAAAD8/+P/AQAEAAIAAAD9/+P/AQAFAAIAAAD//+P/AQAAAAEAAAABAOP/AQAAAAEAAAD+/9z/AQADAAAAAAD9/9z/AQAEAAIAAAACAOD/AQAAAAEAAAAFAOP/AQAEAAIAAAADAOP/AQAAAAEAAAAFANn/AQAEAAIAAAAAANf/AQACAAAAAAABANf/AQAFAAIAAAD7/9f/AQAFAAIAAAD6/9f/AQACAAAAAAD//9f/AQAEAAIAAAD9/8v/AQABAAAAAAD+/8v/AQAFAAIAAAAFAMf/AQACAAAAAAD+/9L/AQAFAAIAAAAFAM7/AQACAAAAAAD7/7//AQAAAAEAAAACALz/AQAEAAIAAAADALz/AQACAAAAAAAEALz/AQAFAAIAAAD//7j/AQACAAAAAAAAALj/AQAFAAIAAAD7/7P/AQAFAAIAAAD6/7P/AQACAAAAAAD8/67/AQAEAAIAAAD9/67/AQADAAAAAAACALP/AQACAAAAAAADALP/AQAFAAIAAAACAKX/AQAEAAIAAAADAKX/AQADAAAAAAD9/5P/AQAEAAIAAAD+/5P/AQAFAAIAAAABAI7/AQAAAAEAAAABAI//AQAAAAIAAAAEAM7/AQAEAAIAAAAEAMf/AQAEAAIAAAD6/8n/AQAFAAIAAAD9/8f/AQAEAAIAAAD6/8X/AQAFAAIAAAD//8P/AQAFAAIAAAD+/8P/AQACAAAAAAD8/83/AQACAAAAAAD7/83/AQAEAAIAAAD9/6//AAACAAEAAAD9/7D/AAACAAEAAAD9/7H/AAAAAAIAAAAFAIj/AQAEAAIAAAA=")
 tile_set = ExtResource("1_den7l")
 
-[node name="Flag" parent="Environment" instance=ExtResource("2_mc6tb")]
+[node name="Flag" parent="Environment" node_paths=PackedStringArray("ui") instance=ExtResource("2_mc6tb")]
 position = Vector2(-550, -12400)
+ui = NodePath("../../UI")
 
 [node name="FakeFlag" type="Area2D" parent="Environment"]
 position = Vector2(-550, -1600)
