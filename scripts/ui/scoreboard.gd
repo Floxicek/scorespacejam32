@@ -42,7 +42,7 @@ func show_scoreboard():
 		return
 	$UsernameInput.hide()
 	$Scoreboard.show()
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(.5).timeout
 	var sw_result = await SilentWolf.Scores.get_scores(200, "level"+str(SceneManager.current_level)).sw_get_scores_complete
 	%LOADING.hide()
 	var scoreboards = sw_result.scores
