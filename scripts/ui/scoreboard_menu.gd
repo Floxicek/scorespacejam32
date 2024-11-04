@@ -18,7 +18,7 @@ func _ready():
 
 
 func show_scoreboard():
-	var sw_result = await SilentWolf.Scores.get_scores(200, "level"+str(level)).sw_get_scores_complete
+	var sw_result = await SilentWolf.Scores.get_scores(30, "level"+str(level)).sw_get_scores_complete
 	print(level, sw_result)
 	loading.hide()
 	var scoreboards = sw_result.scores
@@ -26,7 +26,9 @@ func show_scoreboard():
 	if scoreboards.size() != 0:
 		show()
 	
+	var l = 1
 	for i in scoreboards:
 		var lab = scoreboardLabel.instantiate()
-		lab.text = str(i["player_name"]) + " " + str(Score.read_score_from_leaderboard(i["score"]))
+		lab.text = str(l) +". " + str(i["player_name"]) + " " + str(Score.read_score_from_leaderboard(i["score"]))
 		vbox.add_child(lab)
+		l+=1

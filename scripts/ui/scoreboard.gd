@@ -45,15 +45,16 @@ func show_scoreboard():
 	$UsernameInput.hide()
 	$Scoreboard.show()
 	await get_tree().create_timer(.5).timeout
-	var sw_result = await SilentWolf.Scores.get_scores(200, "level"+str(SceneManager.current_level)).sw_get_scores_complete
+	var sw_result = await SilentWolf.Scores.get_scores(30, "level"+str(SceneManager.current_level)).sw_get_scores_complete
 	%LOADING.hide()
 	var scoreboards = sw_result.scores
 	print("Scores: " + str(sw_result.scores))
-	
+	var l = 1
 	for i in scoreboards:
 		var lab = scoreboardLabel.instantiate()
-		lab.text = str(i["player_name"]) + " " + str(Score.read_score_from_leaderboard(i["score"]))
+		lab.text = str(l) +". " + str(i["player_name"]) + " " + str(Score.read_score_from_leaderboard(i["score"]))
 		%ScoreboardVBox.add_child(lab)
+		l+=1
 
 
 func _on_continue_pressed():
