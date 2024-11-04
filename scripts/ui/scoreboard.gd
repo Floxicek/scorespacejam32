@@ -13,6 +13,8 @@ func show_me():
 	if SceneManager.current_level != 0:
 		if Score.username == "":
 			$UsernameInput.show()
+			%Username.grab_focus()
+			%Score.text = "Score: " + str(Score.last_score)
 		else:
 			submit_score()
 			show_scoreboard()

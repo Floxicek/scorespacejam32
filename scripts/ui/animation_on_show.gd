@@ -1,8 +1,9 @@
 class_name AnimationOnShow extends Node
 
-@export var transition_type := Tween.TransitionType.TRANS_QUAD
+@export var transition_type := Tween.TransitionType.TRANS_QUINT
 @export var hidden_height := 1200
 @export var duration := .7
+@export var wait:=0
 
 @onready var target: Control
 var default_position: Vector2
@@ -21,5 +22,7 @@ func animation_on_show():
 func add_tween(property: String, value, seconds: float) -> void:
 	if not is_inside_tree():
 		return
+	if wait > 0:
+		await  get_tree().create_timer(wait).timeout
 	var tween = get_tree().create_tween()
 	tween.tween_property(target, property, value, seconds).set_trans(transition_type)
