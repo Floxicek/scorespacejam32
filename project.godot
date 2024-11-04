@@ -22,6 +22,7 @@ Global="*res://global.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 Score="*res://scripts/autoload/score.gd"
 SceneManager="*res://scenes/SceneManager.tscn"
+MusicPlayer="*res://scenes/music_player.tscn"
 
 [display]
 

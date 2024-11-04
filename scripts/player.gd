@@ -76,14 +76,16 @@ func play_sand_sound():
 func _process(_delta: float) -> void:
 	if not Score.game_is_running:
 		return
+
+	if Input.is_action_pressed("ui_cancel"):
+		SceneManager.menu()
+		return
 	
 	if Input.is_action_pressed("aim_left"):
 		angle -= angle_speed * _delta
 	if Input.is_action_pressed("aim_right"):
 		angle += angle_speed * _delta
-	angle = clamp(angle, -1.5, 1.5)
-	
-		
+	angle = clamp(angle, -1.5, 1.5)		
 
 	var is_moving = linear_velocity.length() >= movement_threshold
 	if is_moving:
