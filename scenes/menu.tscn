@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci8l58ygxiu0y"]
+[gd_scene load_steps=4 format=3 uid="uid://drmgp3kxxd2hf"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_eif0c"]
+[ext_resource type="FontFile" uid="uid://bxibr3cgsdhaa" path="res://assets/fonts/Fredoka-Light.ttf" id="2_rgvfd"]
 
 [sub_resource type="Theme" id="Theme_fhrim"]
 
@@ -32,16 +33,22 @@ theme_override_constants/separation = 20
 [node name="Tutorial" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_rgvfd")
+theme_override_font_sizes/font_size = 40
 text = "Tutorial"
 
 [node name="LevelEasy" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_rgvfd")
+theme_override_font_sizes/font_size = 40
 text = "Level easy"
 
 [node name="LevelHard" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_rgvfd")
+theme_override_font_sizes/font_size = 40
 text = "Level hard"
 
 [connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
