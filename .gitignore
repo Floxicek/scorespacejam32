@@ -6,3 +6,5 @@ global.gd
 *.tmp
 
 .vscode/
+
+build/
