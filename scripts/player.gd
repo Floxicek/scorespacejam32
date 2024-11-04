@@ -5,7 +5,6 @@ extends RigidBody2D
 @export var power_speed: float = 1000
 @export var angle_speed: float = 1.5
 
-
 # map of angular dampening values for each layer
 @export var layer_damp: Dictionary = {
 	"Map": 4,
@@ -14,11 +13,17 @@ extends RigidBody2D
 
 @export var movement_threshold := 3.0
 
-var sounds = [
+var click_sounds = [
 	preload("res://assets/audio/click1.mp3"),
 	preload("res://assets/audio/click2.mp3"),
 	preload("res://assets/audio/click3.mp3"),
-	preload("res://assets/audio/click4.mp3"),
+	preload("res://assets/audio/click4.mp3")
+]
+
+var sand_sounds = [
+	preload("res://assets/audio/sand1.mp3"),
+	preload("res://assets/audio/sand2.mp3"),
+	preload("res://assets/audio/sand3.mp3")
 ]
 
 var last_sound_time = 0
@@ -49,12 +54,21 @@ func reset_position():
 	moveVector = spawn_pos;
 	reset_state = true;
 
-func play_random_sound():
+func play_click_sound():
 	if Time.get_ticks_msec() - last_sound_time < 100:
 		return
 	last_sound_time = Time.get_ticks_msec()
 
-	var sound = sounds[randi() % sounds.size()]
+	var sound = click_sounds[randi() % click_sounds.size()]
+	$AudioStreamPlayer.stream = sound
+	$AudioStreamPlayer.play()
+	
+func play_sand_sound():
+	if Time.get_ticks_msec() - last_sound_time < 100:
+		return
+	last_sound_time = Time.get_ticks_msec()
+
+	var sound = sand_sounds[randi() % sand_sounds.size()]
 	$AudioStreamPlayer.stream = sound
 	$AudioStreamPlayer.play()
 
@@ -87,7 +101,7 @@ func _process(_delta: float) -> void:
 		power += power_speed * _delta
 		power = clamp(power, 0, max_power)
 	if Input.is_action_just_released("ui_accept") or power >= max_power:
-		play_random_sound()
+		play_click_sound()
 		self.apply_impulse(Vector2.UP.rotated(angle) * power)
 		power = 0
 		Score.add_stroke()
@@ -106,18 +120,10 @@ func change_arrow_color(alpha: float):
 
 
 func _on_body_entered(body: Node) -> void:
-	if body.name in layer_damp:
-		#print("Setting to ", layer_damp[body.name])
-		self.angular_damp = layer_damp[body.name]
-	
-	play_random_sound()
-	
-	#if not body.is_in_group("Platform"):
-		#return
-	#var body_layers = body.get_collision_layer()
-	#print(body_layers)
-	#for layer in layer_damp.keys():
-		#if body_layers & layer:
-			#
-			#print(layer_damp[layer])
-			#break
+	if body.name == "Map":
+		self.angular_damp = layer_damp["Map"]
+		play_click_sound()
+	elif body.name == "MapSand":
+		self.angular_damp = layer_damp["MapSand"]
+		play_sand_sound()
+		
