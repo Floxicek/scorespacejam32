@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://kd6syeub8fkb" path="res://assets/tileset/tileset_concrete.png" id="1_cwdbd"]
 [ext_resource type="PhysicsMaterial" uid="uid://dp7yo0dajty72" path="res://assets/platform_physics_material.tres" id="1_pvc1e"]
-[ext_resource type="PhysicsMaterial" uid="uid://bmamq3cdomt8" path="res://assets/sand_platform_physics_material.tres" id="2_7y10l"]
+[ext_resource type="PhysicsMaterial" uid="uid://b76rmey2j6x54" path="res://assets/sand_platform_physics_material.tres" id="2_7y10l"]
 [ext_resource type="Texture2D" uid="uid://wpids8cwc216" path="res://assets/tileset/tileset_sand.png" id="2_infaq"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_t7ye5"]
