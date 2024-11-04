@@ -11,7 +11,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8d4c"]
 size = Vector2(242, 119)
 
-[node name="Map" type="Node2D"]
+[node name="Map2" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 

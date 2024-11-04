@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="12_52wpu"]
 [ext_resource type="TileSet" uid="uid://2ug3u3nxywaj" path="res://assets/tileset/tileset.tres" id="13_ka4yc"]
 
-[node name="Map" type="Node2D"]
+[node name="Map1" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 
