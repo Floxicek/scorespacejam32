@@ -14,6 +14,15 @@ extends RigidBody2D
 
 @export var movement_threshold := 3.0
 
+var sounds = [
+	preload("res://assets/audio/click1.mp3"),
+	preload("res://assets/audio/click2.mp3"),
+	preload("res://assets/audio/click3.mp3"),
+	preload("res://assets/audio/click4.mp3"),
+]
+
+var last_sound_time = 0
+
 var power: float = 0
 var angle: float = 0
 
@@ -39,6 +48,16 @@ func _integrate_forces(state):
 func reset_position():
 	moveVector = spawn_pos;
 	reset_state = true;
+
+func play_random_sound():
+	if Time.get_ticks_msec() - last_sound_time < 100:
+		return
+	last_sound_time = Time.get_ticks_msec()
+
+	var sound = sounds[randi() % sounds.size()]
+	$AudioStreamPlayer.stream = sound
+	$AudioStreamPlayer.play()
+
 
 func _process(_delta: float) -> void:
 	if not Score.game_is_running:
@@ -68,6 +87,7 @@ func _process(_delta: float) -> void:
 		power += power_speed * _delta
 		power = clamp(power, 0, max_power)
 	if Input.is_action_just_released("ui_accept") or power >= max_power:
+		play_random_sound()
 		self.apply_impulse(Vector2.UP.rotated(angle) * power)
 		power = 0
 		Score.add_stroke()
@@ -90,6 +110,7 @@ func _on_body_entered(body: Node) -> void:
 		#print("Setting to ", layer_damp[body.name])
 		self.angular_damp = layer_damp[body.name]
 	
+	play_random_sound()
 	
 	#if not body.is_in_group("Platform"):
 		#return
