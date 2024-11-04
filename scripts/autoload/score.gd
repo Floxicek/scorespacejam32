@@ -9,6 +9,8 @@ var game_is_running = false
 var strokes = 0
 signal update_strokes
 
+var username = ""
+
 
 func add_stroke():
 	if game_is_running:

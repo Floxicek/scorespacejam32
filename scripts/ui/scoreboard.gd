@@ -1,7 +1,6 @@
 extends Control
 
 var scoreboards
-var username = ""
 
 @export var scoreboardLabel : PackedScene = preload("res://scenes/prefabs/scoreboardLabel.tscn")
 
@@ -11,11 +10,14 @@ func _ready():
 	$UsernameInput.hide()
 
 func show_me():
-	if not username:
-		$UsernameInput.show()
+	if SceneManager.current_level != 0:
+		if Score.username == "":
+			$UsernameInput.show()
+		else:
+			submit_score()
+			show_scoreboard()
 	else:
-		submit_score()
-		show_scoreboard()
+		SceneManager.menu()
 
 func _on_username_cancel_button_pressed():
 	show_scoreboard()
@@ -23,16 +25,14 @@ func _on_username_cancel_button_pressed():
 func _on_username_sumbit_button_pressed():
 	if not %Username.text:
 		return
-	username = %Username.text
+	Score.username = %Username.text
 	submit_score()
 	show_scoreboard()
 
 func submit_score():
-	if SceneManager.current_level != 0:
 		var sc = Score.get_score_for_leaderboard()
 		if not sc == -1:
-			
-			var sw_result: Dictionary = await SilentWolf.Scores.save_score(username, sc, "level1").sw_save_score_complete
+			var sw_result: Dictionary = await SilentWolf.Scores.save_score(Score.username, sc, "level"+str(SceneManager.current_level)).sw_save_score_complete
 			print("Score persisted successfully: " + str(sw_result.score_id))
 
 func show_scoreboard():
@@ -60,5 +60,5 @@ func _on_continue_pressed():
 	for c in %ScoreboardVBox.get_children():
 		if not (c.name == "Scoreboard" or c.name == "LOADING"):
 			c.queue_free()
-	SceneManager.new_scene(1)
+	SceneManager.menu()
 	%LOADING.show()

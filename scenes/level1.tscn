@@ -5,10 +5,10 @@
 [ext_resource type="FontFile" uid="uid://bxibr3cgsdhaa" path="res://assets/fonts/Fredoka-Light.ttf" id="4_ixw78"]
 [ext_resource type="PackedScene" uid="uid://cp36kiaghry3t" path="res://scenes/player.tscn" id="10_bvm8b"]
 [ext_resource type="PackedScene" uid="uid://bp4cqmmrdnl67" path="res://scenes/ui.tscn" id="11_45low"]
-[ext_resource type="PackedScene" path="res://scenes/safety_net.tscn" id="12_52wpu"]
+[ext_resource type="PackedScene" uid="uid://o72gr8kb8sum" path="res://scenes/safety_net.tscn" id="12_52wpu"]
 [ext_resource type="TileSet" uid="uid://2ug3u3nxywaj" path="res://assets/tileset/tileset.tres" id="13_ka4yc"]
 
-[node name="Map" type="Node2D"]
+[node name="Map1" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -20,8 +20,9 @@ tile_set = ExtResource("13_ka4yc")
 tile_map_data = PackedByteArray("AAD8//j/AQACAAAAAAD9//j/AQAFAAIAAAAEAPz/AQAFAAIAAAACAPz/AQAEAAIAAAADAPz/AQACAAAAAAD7//j/AQAEAAIAAAAFAOL/AQAEAAIAAAD7/+H/AQAFAAIAAAD6/+H/AQACAAAAAAADANb/AQAEAAIAAAAEANb/AQACAAAAAAAFANb/AQACAAAAAAD6/9f/AQACAAAAAAD7/8//AQAFAAIAAAD6/8//AQACAAAAAAD9/8r/AQAEAAIAAAD+/8r/AQACAAAAAAD//8f/AQAAAAEAAAACAMf/AQABAAAAAAADAMf/AQAFAAIAAAD//77/AQAEAAIAAAAAAL7/AQAFAAIAAAA=")
 tile_set = ExtResource("13_ka4yc")
 
-[node name="Flag" parent="Environment" instance=ExtResource("2_mndox")]
+[node name="Flag" parent="Environment" node_paths=PackedStringArray("ui") instance=ExtResource("2_mndox")]
 position = Vector2(550, -7100)
+ui = NodePath("../../UI")
 
 [node name="FakeFlag" parent="Environment" instance=ExtResource("4_ibiv4")]
 position = Vector2(-550, -1600)
