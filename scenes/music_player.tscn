@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cu8d6gs4vj4i7"]
+[gd_scene load_steps=3 format=3 uid="uid://cu8d6gs4vj4i7"]
 
 [ext_resource type="AudioStream" uid="uid://bpl4maa2ghccp" path="res://assets/audio/One Man Symphony - A New Day's Hurry (Free) - 01 A New Day Begins (General Background Music).mp3" id="1_mqbar"]
+[ext_resource type="Script" path="res://scripts/music_player.gd" id="2_bqre0"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_mqbar")
 volume_db = -20.0
 autoplay = true
 parameters/looping = true
+script = ExtResource("2_bqre0")
