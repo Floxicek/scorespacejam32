@@ -35,6 +35,8 @@ var reset_state = false
 var moveVector: Vector2
 var spawn_pos
 
+var is_moving = false
+
 var tile_map
 
 func _ready() -> void:
@@ -45,6 +47,13 @@ func _ready() -> void:
 
 
 func _integrate_forces(state):
+	#print(linear_velocity.length())
+	if linear_velocity.length() < movement_threshold:
+		is_moving = false
+		#linear_velocity = Vector2.ZERO
+	else:
+		is_moving = true
+	
 	if reset_state:
 		state.transform = Transform2D(0.0, moveVector)
 		linear_velocity = Vector2.ZERO
@@ -87,7 +96,6 @@ func _process(_delta: float) -> void:
 		angle += angle_speed * _delta
 	angle = clamp(angle, -1.5, 1.5)		
 
-	var is_moving = linear_velocity.length() >= movement_threshold
 	if is_moving:
 		#$Arrow.default_color = Color(255,255,255,.3)
 		#$Arrow.gradient.colors[0] = Color(255,255,255,.3)
