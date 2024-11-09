@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/player_trail.gd" id="7_yk7hg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hfhv"]
-radius = 9.0
 
 [sub_resource type="Curve" id="Curve_pg8h6"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.330717, 0.685567), 1.43686, 1.43686, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

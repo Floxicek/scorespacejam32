@@ -22,6 +22,8 @@ config/icon="res://icon.svg"
 Score="*res://scripts/autoload/score.gd"
 SceneManager="*res://scenes/SceneManager.tscn"
 MusicPlayer="*res://scenes/music_player.tscn"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+Global="*res://global.gd"
 
 [display]
 
@@ -80,12 +82,18 @@ mute={
 
 [physics]
 
-common/physics_ticks_per_second=120
+common/physics_ticks_per_second=240
 common/max_physics_steps_per_frame=16
-2d/physics_engine="GodotPhysics2D"
+common/physics_jitter_fix=0.0
+2d/physics_engine="Rapier2D"
 2d/solver/contact_max_allowed_penetration=0.01
 common/physics_interpolation=true
-rapier/solver/contact_natural_frequency=60.0
+rapier/solver/num_internal_pgs_iterations=64
+rapier/solver/num_internal_stabilization_iterations=64
+rapier/solver/num_additional_friction_iterations=64
+rapier/solver/num_iterations=64
+rapier/solver/max_ccd_substeps=64
+rapier/solver/normalized_prediction_distance=0.02
 
 [rendering]
 
