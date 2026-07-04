@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="scorespacejam32"
 run/main_scene="res://scenes/menu.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0.929412, 0.901961, 0.890196, 1)
 boot_splash/image="res://wallpaper.png"
 config/icon="res://icon.svg"
