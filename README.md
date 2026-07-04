@@ -20,4 +20,3 @@ using godot 4.7 stable
 
 - [@floxicek](https://www.github.com/floxicek)
 - [@cubebuc](https://www.github.com/cubebuc)
-
